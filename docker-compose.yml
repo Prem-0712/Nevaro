@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./backend
+    ports: ['8000:8000']
+    volumes:
+      - backend_data:/backend/data
+      - ./backend:/backend
+      - /backend/__pycache__
+
+  frontend: 
+    build: ./frontend
+    ports: ['5173:5173']
+    volumes:
+      - frontend_data:/frontend/data
+      - ./frontend:/frontend
+      - /frontend/node_modules
+
+volumes:
+  backend_data:
+  frontend_data:

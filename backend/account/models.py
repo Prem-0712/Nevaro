@@ -38,7 +38,7 @@ class CustomUserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, verbose_name='Email')
     name = models.CharField(max_length=100, verbose_name='Name')
     is_customer = models.BooleanField(default=True)
-    is_seller = models.BooleanField()
+    is_seller = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

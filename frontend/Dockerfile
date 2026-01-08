@@ -1,13 +1,5 @@
 FROM node:lts-alpine3.23
 
-WORKDIR /frontend
+WORKDIR /workspaces/NEVARO/frontend
 
-COPY package.json package-lock.json ./
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 5173
-
-CMD [ "npm", "run", "dev", "--", "--host" ]
+CMD ["sleep", "infinity"]

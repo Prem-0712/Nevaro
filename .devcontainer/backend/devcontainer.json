@@ -1,0 +1,17 @@
+{
+  "name": "NEVARO Backend",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "nevaro_backend",
+  "workspaceFolder": "/workspaces/NEVARO/backend",
+  "forwardPorts": [8000],
+  "postCreateCommand": "pip install -r requirements.txt",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}

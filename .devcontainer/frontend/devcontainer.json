@@ -1,0 +1,17 @@
+{
+  "name": "NEVARO Frontend",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "nevaro_frontend",
+  "workspaceFolder": "/workspaces/NEVARO/frontend",
+  "forwardPorts": [5173],
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}

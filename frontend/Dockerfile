@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.23
+FROM node:lts-bookworm
 
 WORKDIR /workspaces/NEVARO/frontend
 

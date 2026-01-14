@@ -131,3 +131,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CUSTOM USER MODEL SETTINGS
 AUTH_USER_MODEL = 'account.CustomUserModel'
+
+# SITE SETTINGS
+SITE_NAME = 'Nevaro'
+SITE_DOMAIN = 'https://0.0.0.0:8000'
+FRONTEND_DOMAIN = 'http://localhost:5173'
+
+#EMAIL SETTINGS: 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+#CORS SETTINGS
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "0.0.0.0",
+    "nevaro_backend",
+]

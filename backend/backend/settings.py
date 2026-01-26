@@ -134,7 +134,7 @@ AUTH_USER_MODEL = 'account.CustomUserModel'
 
 # SITE SETTINGS
 SITE_NAME = 'Nevaro'
-SITE_DOMAIN = 'https://0.0.0.0:8000'
+SITE_DOMAIN = 'http://0.0.0.0:8000'
 FRONTEND_DOMAIN = 'http://localhost:5173'
 
 #EMAIL SETTINGS: 

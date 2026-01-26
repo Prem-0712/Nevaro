@@ -9,8 +9,15 @@ from django.contrib.auth.tokens import default_token_generator, PasswordResetTok
 from .utils import send_activation_email
 from django.urls import reverse
 from django.conf import settings
+from .models import CustomUserModel
+from .renderers import CustomRenderer
 
 class RegisterView(APIView):
+    """
+    Docstring for RegisterView:
+    This API is used for registering user
+    """
+    renderer_classes = [CustomRenderer]
 
     def post(self, request, format = None):
         serializer = RegisterSerializer(data = request.data)
@@ -30,3 +37,34 @@ class RegisterView(APIView):
         
         else:
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+        
+class ActivateView(APIView):
+    """
+    Docstring for ActivateView
+    This API is used to activate user
+    """
+
+    def get(self, request, uid, token, format = None):
+
+        try:
+
+            id = smart_str(urlsafe_base64_decode(uid))
+            user = CustomUserModel.objects.get(id = id)
+
+            if (user.is_active):
+                return Response({'msg': 'This user is alrady activated !!'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            if (default_token_generator.check_token(user = user, token = token)):
+                user.is_active = True
+                user.save()
+
+                return Response({'msg': 'User account is successfully activated '}, status=status.HTTP_201_CREATED)
+            
+            else: 
+                return Response({'msg': 'Link is invalid'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        except(TypeError, ValueError, OverflowError):
+            return Response({'msg': 'Invalid UID format'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        except CustomUserModel.DoesNotExist:
+            return Response({'msg': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)

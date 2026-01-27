@@ -1,0 +1,106 @@
+{
+  "info": {
+    "_postman_id": "fc7a54a8-594a-438e-abc8-fbcae049d98b",
+    "name": "Nevaro",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46516716",
+    "_collection_link": "https://go.postman.co/collection/46516716-fc7a54a8-594a-438e-abc8-fbcae049d98b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"sasatoy694@1200b.com\",\r\n    \"name\": \"peter\",\r\n    \"password\": \"peter012\",\r\n    \"password2\": \"peter012\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://0.0.0.0:8000/api/account/register/",
+          "protocol": "http",
+          "host": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "account",
+            "register",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Activate Account",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://0.0.0.0:8000/api/account/activate/MQ/d32ksh-eb433deb53c78c1673f6eccec1f1dee7/",
+          "protocol": "http",
+          "host": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "account",
+            "activate",
+            "MQ",
+            "d32ksh-eb433deb53c78c1673f6eccec1f1dee7",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"faktoty694@1200b.com\",\r\n    \"password\": \"peter012\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://0.0.0.0:8000/api/account/login/",
+          "protocol": "http",
+          "host": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "account",
+            "login",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

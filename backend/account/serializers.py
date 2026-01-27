@@ -20,3 +20,17 @@ class RegisterSerializer(serializers.ModelSerializer):
     
     def create(self, validate_data):
         return CustomUserModel.objects.create_user(**validate_data)
+    
+class LoginSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+
+    class Meta:
+        model = CustomUserModel
+        fields = ['email', 'password']
+
+    def validate(self, attrs):
+        email = attrs.get('email')
+
+        if (not(CustomUserModel.objects.filter(email = email).first())):
+            raise serializers.ValidationError('Email does not exist')
+        return attrs

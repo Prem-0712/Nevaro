@@ -6,5 +6,5 @@ urlpatterns = [
 
     path('activate/<uid>/<token>/', views.ActivateView.as_view(), name='activate'), 
 
-    
+    path('login/', views.LoginView.as_view(), name='login'),
 ]

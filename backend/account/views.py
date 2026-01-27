@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import RegisterSerializer
+from . import serializers
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, smart_str
 from django.contrib.auth.tokens import default_token_generator, PasswordResetTokenGenerator
@@ -11,6 +11,16 @@ from django.urls import reverse
 from django.conf import settings
 from .models import CustomUserModel
 from .renderers import CustomRenderer
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
+
+def get_token_for_user(user):
+    refresh = RefreshToken.for_user(user)
+
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token)
+    }
 
 class RegisterView(APIView):
     """
@@ -20,7 +30,7 @@ class RegisterView(APIView):
     renderer_classes = [CustomRenderer]
 
     def post(self, request, format = None):
-        serializer = RegisterSerializer(data = request.data)
+        serializer = serializers.RegisterSerializer(data = request.data)
 
         if (serializer.is_valid()):
             user = serializer.save()
@@ -68,3 +78,26 @@ class ActivateView(APIView):
         
         except CustomUserModel.DoesNotExist:
             return Response({'msg': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        
+class LoginView(APIView):
+    renderer_classes = [CustomRenderer]
+
+    def post(self, request, format = None):
+
+        serializer = serializers.LoginSerializer(data = request.data)
+
+        if (serializer.is_valid()):
+            email = serializer.data.get('email')
+            password = serializer.data.get('password')
+
+            user = authenticate(request, email = email, password = password)
+
+            if (user):
+                jwt_token = get_token_for_user(user)
+
+                return Response({'msg':'Login Successfully done', 'jwt_token': jwt_token}, status=status.HTTP_200_OK)
+            else:
+                return Response({'non_field_errors': ['Email or password is invalid']}, status=status.HTTP_400_BAD_REQUEST)
+        
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

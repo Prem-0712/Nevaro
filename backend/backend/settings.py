@@ -153,3 +153,10 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "nevaro_backend",
 ]
+
+#REST FRAMEWORK SIMPLE-JWT CONFIGURATIONS
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}

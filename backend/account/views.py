@@ -13,6 +13,7 @@ from .models import CustomUserModel
 from .renderers import CustomRenderer
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticated
 
 def get_token_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -101,3 +102,30 @@ class LoginView(APIView):
         
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+class ProfileView(APIView):
+    renderer_classes = [CustomRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format = None):
+        serializer = serializers.ProfileSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class ChangePasswordView(APIView):
+    renderer_classes = [CustomRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, format = None):
+        serializer = serializers.ChangePasswordSerializer(data = request.data, context = {'user': request.user})
+
+        if (serializer.is_valid()):
+
+           user = request.user
+           password = serializer.validated_data['password']
+
+           user.set_password(password)
+           user.save()
+
+           return Response({'msg': 'Password changed successfully'}, status=status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

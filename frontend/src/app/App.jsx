@@ -5,7 +5,7 @@ import logo from '../assets/logo.png';
 const App = () => {
   return (
     <div 
-      className="min-h-screen w-full pl-28 pt-20 flex flex-cols items-center justify-start bg-cover bg-center"
+      className="min-h-screen w-full pl-28 pt-20 flex flex-col items-center justify-start bg-cover bg-center"
       style={{ backgroundImage: `url(${bgImage})` }} 
     >
 <div className = "flex flex-col items-center gap-10">

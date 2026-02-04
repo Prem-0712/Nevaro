@@ -50,6 +50,7 @@ class RegisterView(APIView):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
         
 class ActivateView(APIView):
+    renderer_classes=[CustomRenderer]
     """
     Docstring for ActivateView
     This API is used to activate user

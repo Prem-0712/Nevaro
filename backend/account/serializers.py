@@ -65,3 +65,35 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Both passwords should match !!')
         
         return attrs
+    
+class SendResetPasswordEmailSerializer(serializers.ModelSerializer):
+
+    email = serializers.EmailField()
+    class Meta:
+        model = CustomUserModel
+        fields = ['email']
+
+    def validate(self, attrs):
+
+        email = attrs.get('email')
+
+        if (not (CustomUserModel.objects.filter(email = email).first())):
+            raise serializers.ValidationError('Email Does not exist, register first !!!')
+        return attrs
+    
+class ResetPasswordSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
+    password2 = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
+
+    class Meta:
+        model = CustomUserModel
+        fields = ['password', 'password2']
+
+    def validate(self, attrs):
+        password = attrs.get('password')
+        password2 = attrs.get('password2')
+
+        if (password != password2):
+            raise serializers.ValidationError("Password and Confirm Password doesn't match!!!")
+        return attrs

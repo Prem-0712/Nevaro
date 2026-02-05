@@ -6,7 +6,7 @@ from . import serializers
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, smart_str
 from django.contrib.auth.tokens import default_token_generator, PasswordResetTokenGenerator
-from .utils import send_activation_email
+from .utils import send_activation_email, send_password_reset_email
 from django.urls import reverse
 from django.conf import settings
 from .models import CustomUserModel
@@ -129,4 +129,54 @@ class ChangePasswordView(APIView):
 
            return Response({'msg': 'Password changed successfully'}, status=status.HTTP_200_OK)
         
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class SendResetPasswordEmailView(APIView):
+    renderer_classes = [CustomRenderer]
+
+    def post(self, request, format = None):
+        serializer = serializers.SendResetPasswordEmailSerializer(data = request.data)
+
+        if (serializer.is_valid()):
+
+            email = serializer.validated_data['email']
+            user = CustomUserModel.objects.get(email = email)
+
+            uid = urlsafe_base64_encode(force_bytes(user.id))
+            token = PasswordResetTokenGenerator().make_token(user)
+            
+            password_reset_link = reverse('password_reset', kwargs={'uid': uid, 'token': token})
+            password_reset_url = f'{settings.SITE_DOMAIN}{password_reset_link}'
+
+            try:
+                send_password_reset_email(email, password_reset_url)
+            
+            except Exception as e:
+                return Response({'error': str(e)})
+
+            return Response({'msg': 'Password Reset Link has been successfully sent to the registered email'}, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class ResetPasswordView(APIView):
+    renderer_classes = [CustomRenderer]
+
+    def post(self, request, uid, token, format = None):
+        serializer = serializers.ResetPasswordSerializer(data = request.data)
+
+        id = smart_str(urlsafe_base64_decode(uid))
+        user = CustomUserModel.objects.get(id = id)
+
+        if ( PasswordResetTokenGenerator().check_token(user, token)):
+
+            if (serializer.is_valid()):
+                password = serializer.validated_data['password']
+
+                user.set_password(password)
+                user.save()
+
+                return Response({'msg': 'Your password has been reset successfully, try login'}, status= status.HTTP_200_OK)
+
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

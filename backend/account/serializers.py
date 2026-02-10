@@ -1,14 +1,26 @@
+from django.core.validators import RegexValidator
 from rest_framework import serializers
 from .models import CustomUserModel
 
+password_validator = RegexValidator(
+    regex=r'^(?=(?:.*[A-Za-z]){4,})(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{9,}$',
+    message=(
+        "Password must be at least 9 characters long and contain at least "
+        "4 letters, 1 uppercase letter, 1 number, and 1 symbol."
+    )
+)
+
 class RegisterSerializer(serializers.ModelSerializer):
 
-    password = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
-    password2 = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
+    password = serializers.CharField(style = {'input_style': 'password'}, write_only = True, validators = [password_validator])
+    password2 = serializers.CharField(style = {'input_style': 'password'}, write_only = True, validators = [password_validator])
 
     class Meta:
         model = CustomUserModel
         fields = ['email', 'name', 'password', 'password2']
+
+    def validate_name(self, value):
+        return value.strip().lower()
 
     def validate(self, attrs):
         password = attrs.get('password')
@@ -19,6 +31,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
     
     def create(self, validate_data):
+        validate_data.pop('password2', None)
         return CustomUserModel.objects.create_user(**validate_data)
     
 class LoginSerializer(serializers.ModelSerializer):
@@ -44,8 +57,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ChangePasswordSerializer(serializers.ModelSerializer):
 
     current_password = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
-    password = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
-    password2 = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
+    password = serializers.CharField(style = {'input_style': 'password'}, write_only = True, validators = [password_validator])
+    password2 = serializers.CharField(style = {'input_style': 'password'}, write_only = True, validators = [password_validator])
 
     class Meta:
         model = CustomUserModel
@@ -83,8 +96,8 @@ class SendResetPasswordEmailSerializer(serializers.ModelSerializer):
     
 class ResetPasswordSerializer(serializers.ModelSerializer):
 
-    password = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
-    password2 = serializers.CharField(style = {'input_style': 'password'}, write_only = True)
+    password = serializers.CharField(style = {'input_style': 'password'}, write_only = True, validators = [password_validator])
+    password2 = serializers.CharField(style = {'input_style': 'password'}, write_only = True, validators = [password_validator])
 
     class Meta:
         model = CustomUserModel

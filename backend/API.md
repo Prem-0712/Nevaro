@@ -17,7 +17,6 @@ Create a new user account and trigger email verification.
 - **Full URL:** `http://0.0.0.0:8000/api/account/register/`
 
 ### Headers
-- `Content-Type: application/json`
 - `Accept: application/json`
 
 ### Request Body
@@ -55,3 +54,38 @@ Returned when a user tries to register with an email that already exists.
 }
 ```
 
+## Activate Account
+
+Activating user account using link sent through email
+
+### Endpoint
+- **Method:** `GET`
+- **URL:** `/api/account/activate/`
+- **Full URL:** `http://0.0.0.0:8000/api/account/activate/Ng/d3sie0-9f912491b3d033150ad147ed34f70ba2/`
+
+### Success Responses
+
+#### User Account Activated Successfully (200 Ok)
+
+```json
+{
+  "success": true,
+  "data": {
+    "msg": "User account is successfully activated "
+  }
+}
+```
+
+### Error Responses
+
+#### User does not exist (404 Not Found)
+
+```json
+{
+    "success": false,
+    "status_code": 404,
+    "errors": {
+        "msg": "User does not exist"
+    }
+}
+```

@@ -89,3 +89,76 @@ Activating user account using link sent through email
     }
 }
 ```
+## Change Password
+Change the password of a loggedin user.
+
+### Endpoint
+- **Method:** `POST`
+- **URL:** `/api/account/changepass/`
+- **Full URL:** `http://0.0.0.0:8000/api/account/changepass/`
+
+### Authentication
+This endpoint requires authentication
+
+- Permission: `IsAuthenticated`
+- Header: `Authorization: Bearer <access_token>`
+
+### Headers 
+- `Content-Type: application/json`
+- `Accept: application/json`
+- `Authorization: Bearer <access_token>`
+
+### Request Body
+
+|    Field          | Type   | Required |           Notes                     | 
+|-------------------|--------|----------|-------------------------------------|
+| `current_password`| string |   yes    | Must match user's existing password |
+| `password`        | string |   yes    | New password                        |
+| `password2`       | string |   yes    | Must match `password`               | 
+
+### Example Request
+
+```json
+{
+    "current_password":"Peter@012",
+    "password": "Peter@012",
+    "password2": "Peter@012"
+}
+```
+
+### Success Response (200 OK)
+
+```json
+{
+  "msg": "Password changed successfully"
+}
+```
+
+### Error Responses
+
+### Incorrect Current Password (400 Bad Request) 
+
+```json
+{
+  "non_field_errors": [
+    "Current Password is incorrect !!"
+  ]
+}
+```
+
+#### Passwords Do Not Match (400 Bad Request)
+
+```json 
+{
+  "non_field_errors": [
+    "Both passwords should match !!"
+  ]
+}
+```
+
+#### Unauthorized (401 Unautherized)
+```json
+{
+  "detail": "Authentication credentials were not provided."
+}
+```

@@ -162,3 +162,65 @@ This endpoint requires authentication
   "detail": "Authentication credentials were not provided."
 }
 ```
+
+
+## Login
+
+Login using registered email and password
+
+### Endpoint
+- **Method:** `POST`
+- **URL:** `/api/account/login/`
+- **Full URL:** `http://0.0.0.0:8000/api/account/login/`
+
+### Example Request
+
+```json
+{
+    "email": "kembulkarakshat9967@gmail.co",
+    "password": "Akshat@"
+}
+```
+
+### Success Responses
+
+#### User Logged in Successfully (200 Ok)
+
+```json
+{
+    "success": true,
+    "data": {
+        "msg": "Login Successfully done",
+        "jwt_token": {
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MTA5NTczMSwiaWF0IjoxNzcxMDA5MzMxLCJqdGkiOiJiNmY5YmZkMDc3NDA0ZjJhYjViNTNhNGIwNjFlNjFmOSIsInVzZXJfaWQiOiIxIn0.S69UfOTQ4-iFEwJvX54oBACobgDWuF0jgDE7F-1eeAs",
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzcxMDA5NjMxLCJpYXQiOjE3NzEwMDkzMzEsImp0aSI6ImIxMDI3ZTRlZGEzOTQ5YWE4NDNmMDBhZmUwN2IzNGEyIiwidXNlcl9pZCI6IjEifQ.RM2zd0CKWN1D-xUjrhTUzUCcIg_5R8aQ0vZlnngE28E"
+        }
+    }
+}
+```
+
+### Error Responses
+
+#### User does not exist (404 Not Found)
+
+```json
+{
+    "success": false,
+    "status_code": 400,
+    "errors": {
+        "non_field_errors": [
+            "Email or password is invalid"
+        ]
+    }
+}
+
+{
+    "success": false,
+    "status_code": 400,
+    "errors": {
+        "non_field_errors": [
+            "Email does not exist"
+        ]
+    }
+}
+```

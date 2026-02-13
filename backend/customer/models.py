@@ -57,7 +57,7 @@ class ProfileModel(models.Model):
         on_delete=models.CASCADE,
         related_name='customer_profile'
     )
-    pincode = models.IntegerField(max_length=6)
+    pincode = models.IntegerField()
     state = models.CharField(max_length=2, choices= STATUS_CHOICE)
     district = models.CharField(max_length=25)
     city = models.CharField(max_length=25)

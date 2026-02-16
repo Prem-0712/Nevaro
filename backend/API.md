@@ -224,3 +224,65 @@ Login using registered email and password
     }
 }
 ```
+
+
+## Profile
+
+Retrieve authenticated user profile details.
+
+### Endpoint
+- **Method:** `GET`
+- **URL:** `/api/account/profile/`
+- **Full URL:** `http://0.0.0.0:8000/api/account/profile/`
+
+### Headers
+- `Accept: application/json`
+- `Authorization: Bearer <access_token>`
+
+### Success Response (200 OK)
+
+Returned when a valid access token is provided.
+
+```json
+{
+  "success": true,
+  "data": {
+    "email": "kembulkarakshat9967@gmail.com",
+    "name": "akshat",
+    "is_active": true,
+    "is_customer": true,
+    "is_seller": false,
+    "is_superuser": false
+  }
+}
+```
+
+### Error Responses
+
+#### Missing Token (401 Unauthorized)
+
+```json
+{
+  "detail": "Authentication credentials were not provided."
+}
+```
+
+#### Invalid or Expired Token (401 Unauthorized)
+
+```json
+{
+  "success": false,
+  "status_code": 401,
+  "errors": {
+    "detail": "Given token not valid for any token type",
+    "code": "token_not_valid",
+    "messages": [
+      {
+        "token_class": "AccessToken",
+        "token_type": "access",
+        "message": "Token is expired"
+      }
+    ]
+  }
+}
+```

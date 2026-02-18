@@ -201,7 +201,7 @@ Login using registered email and password
 
 ### Error Responses
 
-#### User does not exist (404 Not Found)
+#### Password is incorrect (400 Not Found)
 
 ```json
 {
@@ -213,7 +213,11 @@ Login using registered email and password
         ]
     }
 }
+```
 
+#### User does not exist (400 Not Found)
+
+```json
 {
     "success": false,
     "status_code": 400,

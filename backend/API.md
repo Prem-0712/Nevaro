@@ -226,7 +226,7 @@ Login using registered email and password
 ```
 
 
-## Profile
+## Profile  
 
 Retrieve authenticated user profile details.
 

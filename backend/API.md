@@ -162,3 +162,131 @@ This endpoint requires authentication
   "detail": "Authentication credentials were not provided."
 }
 ```
+
+
+## Login
+
+Login using registered email and password
+
+### Endpoint
+- **Method:** `POST`
+- **URL:** `/api/account/login/`
+- **Full URL:** `http://0.0.0.0:8000/api/account/login/`
+
+### Example Request
+
+```json
+{
+    "email": "kembulkarakshat9967@gmail.co",
+    "password": "Akshat@"
+}
+```
+
+### Success Responses
+
+#### User Logged in Successfully (200 Ok)
+
+```json
+{
+    "success": true,
+    "data": {
+        "msg": "Login Successfully done",
+        "jwt_token": {
+            "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MTA5NTczMSwiaWF0IjoxNzcxMDA5MzMxLCJqdGkiOiJiNmY5YmZkMDc3NDA0ZjJhYjViNTNhNGIwNjFlNjFmOSIsInVzZXJfaWQiOiIxIn0.S69UfOTQ4-iFEwJvX54oBACobgDWuF0jgDE7F-1eeAs",
+            "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzcxMDA5NjMxLCJpYXQiOjE3NzEwMDkzMzEsImp0aSI6ImIxMDI3ZTRlZGEzOTQ5YWE4NDNmMDBhZmUwN2IzNGEyIiwidXNlcl9pZCI6IjEifQ.RM2zd0CKWN1D-xUjrhTUzUCcIg_5R8aQ0vZlnngE28E"
+        }
+    }
+}
+```
+
+### Error Responses
+
+#### Password is incorrect (400 Not Found)
+
+```json
+{
+    "success": false,
+    "status_code": 400,
+    "errors": {
+        "non_field_errors": [
+            "Email or password is invalid"
+        ]
+    }
+}
+```
+
+#### User does not exist (400 Not Found)
+
+```json
+{
+    "success": false,
+    "status_code": 400,
+    "errors": {
+        "non_field_errors": [
+            "Email does not exist"
+        ]
+    }
+}
+```
+
+
+## Profile  
+
+Retrieve authenticated user profile details.
+
+### Endpoint
+- **Method:** `GET`
+- **URL:** `/api/account/profile/`
+- **Full URL:** `http://0.0.0.0:8000/api/account/profile/`
+
+### Headers
+- `Accept: application/json`
+- `Authorization: Bearer <access_token>`
+
+### Success Response (200 OK)
+
+Returned when a valid access token is provided.
+
+```json
+{
+  "success": true,
+  "data": {
+    "email": "kembulkarakshat9967@gmail.com",
+    "name": "akshat",
+    "is_active": true,
+    "is_customer": true,
+    "is_seller": false,
+    "is_superuser": false
+  }
+}
+```
+
+### Error Responses
+
+#### Missing Token (401 Unauthorized)
+
+```json
+{
+  "detail": "Authentication credentials were not provided."
+}
+```
+
+#### Invalid or Expired Token (401 Unauthorized)
+
+```json
+{
+  "success": false,
+  "status_code": 401,
+  "errors": {
+    "detail": "Given token not valid for any token type",
+    "code": "token_not_valid",
+    "messages": [
+      {
+        "token_class": "AccessToken",
+        "token_type": "access",
+        "message": "Token is expired"
+      }
+    ]
+  }
+}
+```

@@ -110,3 +110,4 @@ class ResetPasswordSerializer(serializers.ModelSerializer):
         if (password != password2):
             raise serializers.ValidationError("Password and Confirm Password doesn't match!!!")
         return attrs
+

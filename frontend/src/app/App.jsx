@@ -76,12 +76,7 @@ export default function App() {
         </form>
       </div>
 
-      {/* Bottom Right Icon Decoration */}
-      <div className="absolute bottom-6 right-6">
-        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
-           <span className="text-xs">🧠</span>
-        </div>
-      </div>
+      
     </div>
   );
 }

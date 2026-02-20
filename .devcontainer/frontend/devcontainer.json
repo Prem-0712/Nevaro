@@ -4,7 +4,8 @@
   "service": "nevaro_frontend",
   "workspaceFolder": "/workspaces/NEVARO/frontend",
   "forwardPorts": [5173],
-  "postCreateCommand": "cd /workspaces/NEVARO/frontend && npm ci",
+  "postCreateCommand": "cd /workspaces/NEVARO/frontend && npm install",
+  "postStartCommand": "cd /workspaces/NEVARO/frontend && npm run dev",
   "customizations": {
     "vscode": {
       "extensions": [

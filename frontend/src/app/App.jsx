@@ -1,44 +1,87 @@
-import { useEffect, useState } from 'react';
-import bgImage from '../assets/background-login.jpeg';
-import logo from '../assets/logo.png';
+import { useState } from 'react';
 
-const App = () => {
+export default function App() {
+  // 1. State to toggle between Sign In and Log In
+  const [isLogin, setIsLogin] = useState(true);
+  
+  // 2. State to capture user input
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitting:", { email, password, mode: isLogin ? 'Login' : 'Sign Up' });
+    // Future step: Connect to your Django backend here
+  };
+
   return (
-    <div 
-      className="min-h-screen w-full pl-28 pt-20 flex flex-col items-center justify-start bg-cover bg-center"
-      style={{ backgroundImage: `url(${bgImage})` }} 
-    >
-<div className = "flex flex-col items-center gap-10">
-    <img   
-    src = {logo}
-    className = "w-48"
-    />
-  <button>
-  sign in sign 
-  </button>
-  <div className = "bg-white rounded-2xl px-64 py-72 shadow-2xl flex flex-col justify-start gap-4">
-
-<input type="email"
- placeholder="Enter e-mail"
-  className="w-full px-5 py-4 border-2 border-gray-400 rounded-2xl focus:outline-none focus:border-yellow-500 placeholder-gray-500">
-    
-  </input>
-  <input type="email"
- placeholder="Enter e-mail"
-  className="w-full px-5 py-4 border-2 border-gray-400 rounded-2xl focus:outline-none focus:border-yellow-500 placeholder-gray-500">
-    
-  </input>
-  <input type="email"
- placeholder="Enter e-mail"
-  className="w-full px-5 py-4 border-2 border-gray-400 rounded-2xl focus:outline-none focus:border-yellow-500 placeholder-gray-500">
-    
-  </input>
-    
-
-  </div>
-  </div>
+    <div className="min-h-screen bg-yellow-400 flex items-center justify-center relative overflow-hidden">
+      
+      {/* Background Decoration */}
+      <div className="absolute top-10 right-10">
+        <div className="w-20 h-20 bg-yellow-500 rounded-full opacity-50"></div>
       </div>
+
+      {/* Main Card */}
+      <div className="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md z-10">
+        
+        {/* Logo */}
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-bold tracking-tighter">NEVARO</h1>
+        </div>
+
+        {/* Toggle Switch */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-gray-100 rounded-full p-1 flex">
+            <button 
+              onClick={() => setIsLogin(false)}
+              className={`${!isLogin ? 'bg-black text-white' : 'text-gray-500'} px-6 py-2 rounded-full text-sm font-medium transition-all`}
+            >
+              Sign in
+            </button>
+            <button 
+              onClick={() => setIsLogin(true)}
+              className={`${isLogin ? 'bg-black text-white' : 'text-gray-500'} px-6 py-2 rounded-full text-sm font-medium transition-all`}
+            >
+              Log in
+            </button>
+          </div>
+        </div>
+
+        {/* Form Inputs */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input 
+            type="email" 
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full h-12 px-4 bg-gray-50 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            required
+          />
+          <input 
+            type="password" 
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full h-12 px-4 bg-gray-50 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            required
+          />
+          
+          <button 
+            type="submit"
+            className="w-full h-12 bg-black text-white rounded-lg font-bold hover:bg-gray-800 transition-colors"
+          >
+            {isLogin ? 'Log In' : 'Sign In'}
+          </button>
+        </form>
+      </div>
+
+      {/* Bottom Right Icon Decoration */}
+      <div className="absolute bottom-6 right-6">
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+           <span className="text-xs">🧠</span>
+        </div>
+      </div>
+    </div>
   );
 }
-
-export default App;

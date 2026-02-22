@@ -46,7 +46,7 @@ class CustomerModel(models.Model):
         on_delete= models.CASCADE,
         related_name='customer_name'
     )
-    birth_date = models.DateField()
+    birth_date = models.DateField(null= True, blank= True)
 
     def __str__(self):
         return self.user.name

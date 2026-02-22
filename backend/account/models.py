@@ -43,8 +43,8 @@ class CustomUserModel(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
@@ -52,10 +52,7 @@ class CustomUserModel(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
     
     def __str__(self):
-        return self.email
-
-    def __str__(self):
-        return self.name
+        return (f'{self.name}')
 
     def has_perm(self, perm, obj = None):
         return self.is_superuser

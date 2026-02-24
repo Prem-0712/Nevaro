@@ -70,7 +70,6 @@ class ActivateView(APIView):
             if (default_token_generator.check_token(user = user, token = token)):
                 user.is_active = True
                 user.save()
-                print('lets see if its start or not')
                 Customer.send(sender=ActivateView, user = user.id)
 
                 return Response({'msg': 'User account is successfully activated '}, status=status.HTTP_201_CREATED)

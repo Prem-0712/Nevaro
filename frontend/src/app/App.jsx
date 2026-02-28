@@ -1,14 +1,14 @@
 
 import LoginPage from '../pages/LoginPage';
-import Navbar from '../components/Navbar'
+import HomePage from '../pages/HomePage';
 
 export default function App() {
   
 
   return ( 
     <>
-    <LoginPage />
-    <Navbar />
+   
+    <HomePage />
     </>
   );
 }

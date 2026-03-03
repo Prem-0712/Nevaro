@@ -4,6 +4,8 @@ import TrendingCard from "../components/TrendingCard";
 import ProductCard from "../components/ProductCard";
 import Logo from "../components/icons/Logo";
 import Footer from "../components/Footer";
+import SubNavbar from "../components/SubNavbar";
+
 
 const trendingBanners = [
   {
@@ -54,6 +56,8 @@ const HomePage = () => {
     return (
     <main>
         <Navbar />
+        <SubNavbar />
+
         <section className = "flex justify-center items-center ">
             <Hero />
         </section>

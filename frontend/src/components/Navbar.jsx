@@ -1,4 +1,4 @@
-import Logo from "../components/Logo.jsx"
+import Logo from "./icons/Logo.jsx"
 import { useState } from "react";
 
 const navLinks = [
@@ -235,12 +235,12 @@ const Navbar = () => {
 
                     {/* sort of categories (second navbar) */}
 
-        <div className="sticky top-0 z-50 w-full bg-white/80 border border-gray-300 px-6 py-3 flex justify-center">
+        <div className="sticky top-0 z-40 w-full bg-white/80 border border-gray-300 h-[50px] flex justify-center items-center ">
             {Object.entries(CategoryData).map(([key,value]) => (
                 <div
                 key = {key}
                 onMouseLeave={() => setActiveCategory(null)}
-                className = "relative"
+                className = "relative overflow-visible"
                 >
                     <div
                     onMouseEnter={() => setActiveCategory(key)}
@@ -251,13 +251,13 @@ const Navbar = () => {
                         </span>
                     </div>
 {activeCategory === key && (
-    <div className="absolute top-full left-0 w-[600px] bg-white shadow-2xl rounded-xl border border-gray-100 p-6 flex gap-8 z-50">
-      {/* O Modal (Container Branco) */}
+    <div className="absolute top-full left-0 w-150 bg-white shadow-2xl rounded-xl border border-gray-700/80    p-6 flex gap-8 z-60 overflow-visible ">
+      
   
-  {/* LADO ESQUERDO: Imagem e Título de Destaque */}
+  
   <div className="w-1/3 flex flex-col gap-4">
     <h3 className="font-bold text-xl text-gray-800 leading-tight">
-      {value.title} {/* Puxa: "Electronics & Technology" */}
+      {value.title} 
     </h3>
     <img 
       src={value.image} 
@@ -266,16 +266,16 @@ const Navbar = () => {
     />
   </div>
 
-  {/* LADO DIREITO: As Listas de Itens */}
+  
   <div className="flex-1 grid grid-cols-2 gap-6">
     {value.sections.map((section, idx) => (
       <div key={idx} className="flex flex-col gap-2">
-        {/* Título da Seção (ex: Mobile and Accessories) */}
+        
         <h4 className="font-bold text-sm text-gray-900 border-b pb-1">
           {section.name}
         </h4>
         
-        {/* Lista de Links Reais */}
+        
         <ul className="flex flex-col gap-1">
           {section.itens.map((link, linkIdx) => (
             <li key={linkIdx}>

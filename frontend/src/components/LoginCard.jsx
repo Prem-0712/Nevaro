@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "./Logo.jsx"
+import Logo from "./icons/Logo.jsx"
 
 
 const LoginCard = () => {

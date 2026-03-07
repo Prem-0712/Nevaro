@@ -2,23 +2,26 @@ name: ${PROJECT_NAME}
 
 services:
   nevaro_frontend:
+    image: nevaro_frontend
     container_name: ${PROJECT_NAME}_frontend
     build:
       context: ../frontend
     volumes:
-      - ..:/workspaces/NEVARO
-      - nevaro_frontend_node_modules:/workspaces/NEVARO/frontend/node_modules
+      - ../frontend:/app/frontend
+      - nevaro_frontend_node_modules:/app/frontend/node_modules
     ports:
       - "${FRONTEND_PORT}:5173"
     command: sleep infinity
     env_file:
       - .env
   nevaro_backend:
+    working_dir: /workspace/NEVARO/backend
+    image: nevaro_backend
     container_name: ${PROJECT_NAME}_backend
     build:
       context: ../backend
     volumes:
-      - ..:/workspaces/NEVARO
+      - ..:/workspace/NEVARO
     ports:
       - "${BACKEND_PORT}:8000"
     command: sleep infinity

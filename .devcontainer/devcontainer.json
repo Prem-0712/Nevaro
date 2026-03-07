@@ -1,10 +1,10 @@
 {
-  "name": "NEVARO Backend",
-  "dockerComposeFile": "../docker-compose.yml",
+  "name": "NEVARO",
+  "dockerComposeFile": "docker-compose.yml",
   "service": "nevaro_backend",
-  "workspaceFolder": "/workspaces/NEVARO/backend",
-  "forwardPorts": [8000],
-  "postCreateCommand": "pip install -r requirements.txt",
+  "workspaceFolder": "/workspace/NEVARO",
+  "forwardPorts": [8000, 5173],
+  "postCreateCommand": "cd frontend && npm install",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -17,6 +17,14 @@
         "ms-python.python@2026.0.0",
         "ms-python.vscode-pylance@2025.10.4",
         "ms-python.vscode-python-envs@1.16.0",
+        "waderyan.gitblame@11.2.0",
+        "bradlc.vscode-tailwindcss@0.14.29",
+        "dbaeumer.vscode-eslint@3.0.20",
+        "eamodio.gitlens@17.8.1",
+        "ecmel.vscode-html-css@2.0.13",
+        "esbenp.prettier-vscode@11.0.2",
+        "george-alisson.html-preview-vscode@0.2.5",
+        "mhutchie.git-graph@1.30.0",
         "waderyan.gitblame@11.2.0"
       ]
     }

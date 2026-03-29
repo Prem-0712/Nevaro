@@ -21,12 +21,12 @@ return (
     <img 
     src={logoBag1} 
     alt="bag-1"
-    className="absolute top-[-10%] right-[30%] rotate-[40deg] z-10" 
+    className="absolute top-[-10%] right-[30%] rotate-40 z-10" 
   />
     <img  
     src = {logoBag2}
     alt="bag-2"
-    className = "absolute top-[-3%] right-[-25%] -rotate-[10deg] z-20"
+    className = "absolute top-[-3%] right-[-25%] -rotate-10 z-20"
     />
     <img  
     src = {normalBag}

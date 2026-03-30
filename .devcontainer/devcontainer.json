@@ -4,7 +4,7 @@
   "service": "nevaro_backend",
   "workspaceFolder": "/workspace/NEVARO",
   "forwardPorts": [8000, 5173],
-  "postCreateCommand": "cd frontend && npm install",
+  "postCreateCommand": "cd frontend && npm install -g npm@11.11.0 && npm install",
   "customizations": {
     "vscode": {
       "extensions": [

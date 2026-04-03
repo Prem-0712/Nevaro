@@ -2,29 +2,30 @@
   "name": "NEVARO",
   "dockerComposeFile": "docker-compose.yml",
   "service": "nevaro_backend",
-  "workspaceFolder": "/workspace/NEVARO",
-  "forwardPorts": [8000, 5173],
-  "postCreateCommand": "cd frontend && npm install -g npm@11.11.0 && npm install",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [
+    8000,
+    5173
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
-        "batisteo.vscode-django@1.15.0",
-        "eamodio.gitlens@17.8.1",
-        "mhutchie.git-graph@1.30.0",
-        "ms-azuretools.vscode-containers@2.3.0",
-        "ms-azuretools.vscode-docker@2.0.0",
-        "ms-python.debugpy@2025.18.0",
-        "ms-python.python@2026.0.0",
-        "ms-python.vscode-pylance@2025.10.4",
-        "ms-python.vscode-python-envs@1.16.0",
-        "waderyan.gitblame@11.2.0",
-        "bradlc.vscode-tailwindcss@0.14.29",
-        "eamodio.gitlens@17.8.1",
-        "ecmel.vscode-html-css@2.0.13",
-        "esbenp.prettier-vscode@11.0.2",
-        "george-alisson.html-preview-vscode@0.2.5",
-        "mhutchie.git-graph@1.30.0",
-        "waderyan.gitblame@11.2.0"
+        "ms-python.vscode-python-envs",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.black-formatter",
+        "ms-vscode.vscode-typescript-next",
+        "ms-vscode.js-debug-nightly",
+        "ecmel.vscode-html-css",
+        "batisteo.vscode-django",
+        "dsznajder.es7-react-js-snippets",
+        "bradlc.vscode-tailwindcss",
+        "ms-azuretools.vscode-docker",
+        "codezombiech.gitignore",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "waderyan.gitblame"
       ]
     }
   }

@@ -1,11 +1,11 @@
 FROM node:lts-bookworm
 
-WORKDIR /app/frontend
+WORKDIR /workspace/frontend
 
 COPY package.json package-lock.json ./
 
 RUN npm install -g npm@11.11.0 && \
-    npm install
+    npm ci
 
 COPY . .
 

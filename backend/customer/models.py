@@ -41,6 +41,13 @@ STATUS_CHOICE = (
 )
 
 class CustomerModel(models.Model):
+
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'Customer'
+        verbose_name_plural = 'Customers'
+
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete= models.CASCADE,

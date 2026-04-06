@@ -35,6 +35,13 @@ class CustomUserManager(BaseUserManager):
         
 
 class CustomUserModel(AbstractBaseUser, PermissionsMixin):
+
+    class Meta:
+        db_table = 'user'
+        managed = True
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+
     email = models.EmailField(unique=True, verbose_name='Email')
     name = models.CharField(max_length=100, verbose_name='Name')
     is_customer = models.BooleanField(default=True)

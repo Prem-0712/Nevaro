@@ -6,3 +6,6 @@ makemigrations:
 
 migrate:
 	python manage.py migrate
+
+i:
+	uv pip install --system $(pkg)

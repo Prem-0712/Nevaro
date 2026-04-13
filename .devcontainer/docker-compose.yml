@@ -2,23 +2,27 @@ name: ${PROJECT_NAME}
 
 services:
   nevaro_frontend:
+    working_dir: /workspace/backend
+    image: nevaro_frontend
     container_name: ${PROJECT_NAME}_frontend
     build:
       context: ../frontend
     volumes:
-      - ..:/workspaces/NEVARO
-      - nevaro_frontend_node_modules:/workspaces/NEVARO/frontend/node_modules
+      - ../frontend:/workspace/frontend
+      - nevaro_frontend_node_modules:/workspace/frontend/node_modules
     ports:
       - "${FRONTEND_PORT}:5173"
     command: sleep infinity
     env_file:
       - .env
   nevaro_backend:
+    working_dir: /workspace/backend
+    image: nevaro_backend
     container_name: ${PROJECT_NAME}_backend
     build:
       context: ../backend
     volumes:
-      - ..:/workspaces/NEVARO
+      - ..:/workspace
     ports:
       - "${BACKEND_PORT}:8000"
     command: sleep infinity
@@ -48,17 +52,16 @@ services:
       retries: 10
       start_period: 30s
 
-  nevaro_phpmyadmin:
-    container_name: ${PROJECT_NAME}_phpmyadmin
-    image: phpmyadmin/phpmyadmin
+  nevaro_adminer:
+    image: adminer:latest
+    container_name: ${PROJECT_NAME}_adminer
     env_file:
       - .env
     ports:
-      - "${PHPMYADMIN_PORT}:80"
+      - "8080:8080"
     environment:
-      PMA_HOST: ${PROJECT_NAME}_mysql
-      PMA_USER: root
-      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      - ADMINER_DEFAULT_SERVER=nevaro_mysql
+    restart: unless-stopped
     depends_on:
       - nevaro_mysql
 

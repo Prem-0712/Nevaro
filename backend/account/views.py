@@ -14,6 +14,7 @@ from .renderers import CustomRenderer
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
+from .signals import Customer
 
 def get_token_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -69,6 +70,7 @@ class ActivateView(APIView):
             if (default_token_generator.check_token(user = user, token = token)):
                 user.is_active = True
                 user.save()
+                Customer.send(sender=ActivateView, user = user.id)
 
                 return Response({'msg': 'User account is successfully activated '}, status=status.HTTP_201_CREATED)
             

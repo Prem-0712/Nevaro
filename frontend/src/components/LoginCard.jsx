@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo.png"
+import Logo from "./icons/Logo.jsx"
 
 
 const LoginCard = () => {
@@ -21,10 +21,7 @@ const LoginCard = () => {
         <main className = "flex flex-col z-10 items-center mb-10 lg:mb-0">
             {/* Logo */}
         <div className="text-center mb-6">
-          <img
-          src = {logo}
-          alt="logo"
-          />
+          <Logo />
         </div>  
 
         {/* Toggle Switch */}

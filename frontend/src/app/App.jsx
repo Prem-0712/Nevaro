@@ -1,6 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SellerDashboard from '../pages/sellerdashboard';
 import LoginPage from '../pages/LoginPage';
+import HomePage from '../pages/HomePage';
+import UserDashboard from '../pages/UserDashboard'
+
+export default function App() {
+  
+
+  return ( 
+    <>
+    <UserDashboard />
+    </>
 import AdminDashboard from '../pages/AdminDashboard';
 
 export default function App() {

@@ -6,7 +6,7 @@ import yellowBackground from '../assets/yellowBackground.png';
 
 const LoginPage = () => {
 return (
-<main className = "grid min-h-screen grid-cols-1 lg:grid-cols-2 bg-[#FAD93D]">
+<main className = "overflow-hidden grid min-h-screen grid-cols-1 lg:grid-cols-2 bg-[#FAD93D]">
     <div className="absolute inset-0 z-0">
         <img 
           src={yellowBackground} 

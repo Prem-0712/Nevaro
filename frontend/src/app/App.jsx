@@ -5,6 +5,8 @@ import HomePage from '../pages/HomePage';
 import UserDashboard from '../pages/UserDashboard';
 import AdminDashboard from '../pages/AdminDashboard';
 import RegisterPage from '../pages/RegisterPage';
+import AccountActivationPage from '../pages/AccountActivationPage';
+
 
 export default function App() {
   return (
@@ -15,6 +17,7 @@ export default function App() {
         <Route path="/seller-dashboard" element={<SellerDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/activate" element={<AccountActivationPage />} />
       </Routes>
     </Router>
   );

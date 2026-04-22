@@ -3,7 +3,7 @@ import ShippingIcon from "./icons/ShippingIcon";
 import HeartIcon from "./icons/HeartIcon";
 import DollarSignIcon from "./icons/DollarSignIcon";
 import CountUp from './CountUp'
-import { isGenerator } from "motion";
+
 
 
 

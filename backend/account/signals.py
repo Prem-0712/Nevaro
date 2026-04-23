@@ -1,18 +1,21 @@
-from django.dispatch import Signal, receiver
 from customer.models import CustomerModel
-from .models import CustomUserModel
+from django.dispatch import Signal, receiver
 from django.utils.encoding import smart_str
+from seller.models import SellerModel
+
+from .models import CustomUserModel
 
 # CREATING SIGNAL
 
-Customer = Signal()
+Role = Signal()
 
-@receiver(Customer)
-def create_customer(sender, **kwargs):
-    user_id = kwargs.get('user')
-    user = CustomUserModel.objects.get(id = user_id)
-    if (user.is_active):
 
-        if (user.is_customer == True) and (user.is_seller == False):
+@receiver(Role)
+def migrating_user(sender, **kwargs):
+    user = kwargs.get("user")
 
-            CustomerModel.objects.create(user = user)
+    if (user.is_customer == True) and (user.is_seller == False):
+        CustomerModel.objects.create(user=user)
+
+    if (user.is_seller == True) and (user.is_customer == False):
+        SellerModel.objects.create(user=user)

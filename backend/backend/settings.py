@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -140,7 +140,7 @@ AUTH_USER_MODEL = "account.CustomUserModel"
 # SITE SETTINGS
 SITE_NAME = "Nevaro"
 SITE_DOMAIN = "http://localhost:8000"
-FRONTEND_DOMAIN = "http://localhost:5173"
+FRONTEND_DOMAIN = "http://127.0.0.1:5173"
 
 # EMAIL SETTINGS:
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

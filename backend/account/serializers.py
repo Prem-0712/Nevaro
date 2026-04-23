@@ -1,5 +1,9 @@
+from django.contrib.auth.tokens import default_token_generator
 from django.core.validators import RegexValidator
+from django.utils.encoding import smart_str
+from django.utils.http import urlsafe_base64_decode
 from rest_framework import serializers
+
 from .models import CustomUserModel
 
 password_validator = RegexValidator(
@@ -58,6 +62,30 @@ class RegisterSerializer(serializers.ModelSerializer):
         return CustomUserModel.objects.create_user(**validate_data)
 
 
+class ActivateSerializer(serializers.Serializer):
+
+    uid = serializers.CharField()
+    token = serializers.CharField()
+
+    def validate(self, attrs):
+
+        uid = attrs.get("uid")
+        token = attrs.get("token")
+
+        try:
+            id = smart_str(urlsafe_base64_decode(uid))
+            user = CustomUserModel.objects.get(id=id)
+        except:
+            raise serializers.ValidationError("Invalid UID")
+
+        if not (default_token_generator.check_token(user, token)):
+            raise serializers.ValidationError("Invalid or Expired Token")
+
+        attrs["user"] = user
+
+        return attrs
+
+
 class LoginSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
 
@@ -109,7 +137,7 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
 
-        user = self.context.get("user")
+        user = self.context["request"].user
         current_password = attrs.get("current_password")
         new_password = attrs.get("password")
         confirm_new_password = attrs.get("password2")

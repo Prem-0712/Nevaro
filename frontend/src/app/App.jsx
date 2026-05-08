@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/seller-dashboard" element={<SellerDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
-        <Route path="/activate" element={<AccountActivationPage />} />
+        <Route path="/activate/:uid/:token" element={<AccountActivationPage />} />
       </Routes>
     </Router>
   );

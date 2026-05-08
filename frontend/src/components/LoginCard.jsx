@@ -90,7 +90,7 @@ const LoginCard = () => {
       </div>
 
       {/* Main Card */}
-      <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-lg">
+      <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-xl min-w-125">
 
         {success && (
           <div className="bg-green-50 text-green-700 text-sm rounded-lg px-4 py-3 mb-4">

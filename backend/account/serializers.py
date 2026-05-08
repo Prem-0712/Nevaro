@@ -59,6 +59,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             validate_data["is_seller"] = True
             validate_data["is_customer"] = False
 
+
         return CustomUserModel.objects.create_user(**validate_data)
 
 

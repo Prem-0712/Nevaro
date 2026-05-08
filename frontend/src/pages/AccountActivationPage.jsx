@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import yellowBackground from "../assets/yellowBackground.png";
 
@@ -7,8 +7,7 @@ const AccountActivationPage = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
   const { uid, token } = useParams();
-
-  // console.log(useParams, uid, token);
+  const hasCalled = useRef(false);
 
   useEffect(() => {
     if (!uid || !token) {
@@ -17,10 +16,14 @@ const AccountActivationPage = () => {
       return;
     }
 
+    // Prevent API from being called more than once
+    if (hasCalled.current) return;
+    hasCalled.current = true;
+
     const activateAccount = async () => {
       try {
         const response = await fetch(
-  `http://localhost:8000/api/account/activate/?uid=${uid}&token=${token}`,
+          `http://localhost:8000/api/account/activate/?uid=${uid}&token=${token}`,
           {
             method: "GET",
             headers: { Accept: "application/json" },
@@ -29,12 +32,16 @@ const AccountActivationPage = () => {
 
         const data = await response.json();
 
-        if (data.success) {
+        if (response.status === 200) {
           setStatus("success");
           setTimeout(() => navigate("/"), 6000);
-        } else {
+        } else if (response.status === 400) {
           setStatus("error");
-          setErrorMsg(data.errors?.msg || "Activation failed. Please try again.");
+          setErrorMsg(
+            data.errors?.msg ||
+            data.errors?.non_field_errors?.[0] ||
+            "Activation failed. Please try again."
+          );
         }
       } catch (err) {
         setStatus("error");
@@ -70,7 +77,7 @@ const AccountActivationPage = () => {
             </div>
             <h2 className="text-xl font-bold text-gray-800">Account Activated! 🎉</h2>
             <p className="text-sm text-gray-500">Your account has been successfully activated. You can login now.</p>
-            <p className="text-xs text-gray-400">Redirecting you to login in 5 seconds...</p>
+            <p className="text-xs text-gray-400">Redirecting you to login in 6 seconds...</p>
             <a href="/" className="mt-2 w-full bg-[#FAD93D] hover:bg-yellow-400 text-gray-800 font-semibold py-2.5 rounded-lg text-sm transition-colors text-center block">
               Go to Login
             </a>

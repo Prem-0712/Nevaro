@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Logo from "./icons/Logo.jsx";
-import { registerUser } from "../services/authService";
+import { registerUser, loginUser } from "../services/authService";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../store/authSlice";
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/;
 
@@ -14,6 +16,7 @@ const LoginCard = () => {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const validate = () => {
     const newErrors = {};
@@ -60,8 +63,32 @@ const LoginCard = () => {
         setLoading(false);
       }
     } else {
-      console.log("Login:", { email, password });
+  setLoading(true);
+  try {
+    const { data, status } = await loginUser({ email, password });
+    console.log("Login response:", data, "Status:", status);
+
+
+    if (status === 200) {
+      dispatch(setCredentials({
+        accessToken: data.data.jwt_token.access,
+        refreshToken: data.data.jwt_token.refresh,
+      }));
+      window.location.href = "/user-dashboard";
+    } else {
+      setErrors({
+        general:
+          data.errors?.non_field_errors?.[0] ||
+          "Login failed. Please try again.",
+      });
     }
+  } catch (err) {
+    setErrors({ general: "Something went wrong. Please try again." });
+  } finally {
+    setLoading(false);
+  }
+}
+
   };
 
   return (

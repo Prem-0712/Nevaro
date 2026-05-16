@@ -1,7 +1,9 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
-from django.contrib.auth.tokens import (PasswordResetTokenGenerator,
-                                        default_token_generator)
+from django.contrib.auth.tokens import (
+    PasswordResetTokenGenerator,
+    default_token_generator,
+)
 from django.urls import reverse
 from django.utils.encoding import force_bytes, smart_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -99,12 +101,25 @@ class LoginView(APIView):
             password = serializer.data.get("password")
 
             user = authenticate(request, email=email, password=password)
+            
+            if user.is_customer and not (user.is_seller):
+                user_role = "customer"
+
+            elif user.is_seller and not user.is_customer:
+                user_role = "seller"
+
+            elif user.is_superuser:
+                user_role = "admin"
 
             if user:
                 jwt_token = get_token_for_user(user)
 
                 return Response(
-                    {"msg": "Login Successfully done", "jwt_token": jwt_token},
+                    {
+                        "msg": "Login Successfully done",
+                        "user_role": user_role,
+                        "jwt_token": jwt_token,
+                    },
                     status=status.HTTP_200_OK,
                 )
             else:

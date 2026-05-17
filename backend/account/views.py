@@ -101,17 +101,18 @@ class LoginView(APIView):
             password = serializer.data.get("password")
 
             user = authenticate(request, email=email, password=password)
-            
-            if user.is_customer and not (user.is_seller):
-                user_role = "customer"
-
-            elif user.is_seller and not user.is_customer:
-                user_role = "seller"
-
-            elif user.is_superuser:
-                user_role = "admin"
 
             if user:
+
+                if user.is_customer and not (user.is_seller):
+                    user_role = "customer"
+
+                elif user.is_seller and not user.is_customer:
+                    user_role = "seller"
+
+                elif user.is_superuser:
+                    user_role = "admin"
+
                 jwt_token = get_token_for_user(user)
 
                 return Response(

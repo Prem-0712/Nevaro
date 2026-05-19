@@ -66,16 +66,29 @@ const LoginCard = () => {
   setLoading(true);
   try {
     const { data, status } = await loginUser({ email, password });
-    console.log("Login response:", data, "Status:", status);
+    // console.log("Login response:", data, "Status:", status);
 
 
     if (status === 200) {
-      dispatch(setCredentials({
-        accessToken: data.data.jwt_token.access,
-        refreshToken: data.data.jwt_token.refresh,
-      }));
-      window.location.href = "/user-dashboard";
-    } else {
+  const userRole = data.data.user_role;
+
+  dispatch(setCredentials({
+    accessToken: data.data.jwt_token.access,
+    refreshToken: data.data.jwt_token.refresh,
+    userRole: userRole,
+  }));
+
+  // Redirect based on role
+  if (userRole === "customer") {
+    window.location.href = "/user-dashboard";
+  } else if (userRole === "seller") {
+    window.location.href = "/seller-dashboard";
+  } else if (userRole === "admin") {
+    window.location.href = "/admin-dashboard";
+  }
+}
+
+ else {
       setErrors({
         general:
           data.errors?.non_field_errors?.[0] ||

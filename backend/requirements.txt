@@ -3,6 +3,7 @@ Django==5.2.6
 django-cors-headers==4.9.0
 django-countries==8.2.0
 django-dotenv==1.4.2
+django-phonenumber-field==8.4.0
 djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
 isort==8.0.1

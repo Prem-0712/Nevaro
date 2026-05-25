@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SellerModel, ProfileModel
+from .models import SellerModel
 from account.models import CustomUserModel
 
 
@@ -14,16 +14,3 @@ class SellerAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
     list_display = ["user"]
-
-
-@admin.register(ProfileModel)
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = [
-        "user",
-        "address_line_1",
-        "address_line_2",
-        "postal_code",
-        "city",
-        "state_region",
-        "country",
-    ]

@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django_countries.fields import CountryField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class SellerModel(models.Model):
@@ -15,23 +16,9 @@ class SellerModel(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="seller_name"
     )
 
-    def __str__(self):
-        return self.user.name
-
-
-class ProfileModel(models.Model):
-
-    class Meta:
-        db_table = "sellerprofile"
-        managed = True
-        verbose_name = "SellerProfile"
-        verbose_name_plural = "SellerProfiles"
-
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="seller_profile",
-    )
+    phone_number = PhoneNumberField(blank=True)
+    business_name = models.CharField(max_length=25)
+    business_email = models.EmailField(unique=True)
 
     address_line_1 = models.CharField(max_length=255)
     address_line_2 = models.CharField(max_length=255)
@@ -41,4 +28,6 @@ class ProfileModel(models.Model):
     country = CountryField()
 
     def __str__(self):
-        return self.user.user.name
+        return (
+            f"Seller/User NAME = {self.user.name} Business NAME = {self.business_name}"
+        )

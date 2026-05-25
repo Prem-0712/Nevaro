@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "django_countries",
+    "phonenumber_field",
     "account",
     "customer",
     "seller",

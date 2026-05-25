@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django_countries.fields import CountryField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class CustomerModel(models.Model):
@@ -31,6 +32,8 @@ class ProfileModel(models.Model):
     user = models.ForeignKey(
         CustomerModel, on_delete=models.CASCADE, related_name="customer_profile"
     )
+
+    phone_number = PhoneNumberField(blank=True)
 
     address_line_1 = models.CharField(max_length=255)
     address_line_2 = models.CharField(max_length=255)

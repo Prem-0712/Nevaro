@@ -1,0 +1,346 @@
+[
+    {
+        "model": "product.categorymodel",
+        "pk": 1,
+        "fields": {
+            "name": "Beauty & Personal Care",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 2,
+        "fields": {
+            "name": "Skincare",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 3,
+        "fields": {
+            "name": "Hair Care",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 4,
+        "fields": {
+            "name": "Makeup",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 5,
+        "fields": {
+            "name": "Fragrances",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 6,
+        "fields": {
+            "name": "Grooming",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 7,
+        "fields": {
+            "name": "Bath & Body",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 8,
+        "fields": {
+            "name": "Nail Care",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 9,
+        "fields": {
+            "name": "Men's Grooming product",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 10,
+        "fields": {
+            "name": "Health & Wellness product",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 11,
+        "fields": {
+            "name": "Electronics & Gadgets",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 12,
+        "fields": {
+            "name": "Audio",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 13,
+        "fields": {
+            "name": "Mobile Phones",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 14,
+        "fields": {
+            "name": "Televisions",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 15,
+        "fields": {
+            "name": "Computers",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 16,
+        "fields": {
+            "name": "Wearables",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 17,
+        "fields": {
+            "name": "Tablets",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 18,
+        "fields": {
+            "name": "Cameras",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 19,
+        "fields": {
+            "name": "Storage",
+            "parent": 11
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 20,
+        "fields": {
+            "name": "Fashion & Apparel",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 21,
+        "fields": {
+            "name": "Men's Clothing",
+            "parent": 20
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 22,
+        "fields": {
+            "name": "Women's Clothing",
+            "parent": 20
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 23,
+        "fields": {
+            "name": "Footwear",
+            "parent": 20
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 24,
+        "fields": {
+            "name": "Accessories",
+            "parent": 20
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 25,
+        "fields": {
+            "name": "Home & Kitchen",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 26,
+        "fields": {
+            "name": "Furniture",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 27,
+        "fields": {
+            "name": "Kitchen Appliances",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 28,
+        "fields": {
+            "name": "Home Appliances",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 29,
+        "fields": {
+            "name": "Cookware & Bakeware",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 30,
+        "fields": {
+            "name": "Dinnerware & Serveware",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 31,
+        "fields": {
+            "name": "Bedding",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 32,
+        "fields": {
+            "name": "Lighting",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 33,
+        "fields": {
+            "name": "Home Decor",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 34,
+        "fields": {
+            "name": "Storage & Organization",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 35,
+        "fields": {
+            "name": "Cleaning Supplies",
+            "parent": 25
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 36,
+        "fields": {
+            "name": "Health & Fitness",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 37,
+        "fields": {
+            "name": "Fitness Equipment",
+            "parent": 36
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 38,
+        "fields": {
+            "name": "Sports Nutrition",
+            "parent": 36
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 39,
+        "fields": {
+            "name": "Health Monitors",
+            "parent": 36
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 40,
+        "fields": {
+            "name": "First Aid",
+            "parent": 36
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 41,
+        "fields": {
+            "name": "Personal Health",
+            "parent": 36
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 42,
+        "fields": {
+            "name": "Sports Gear & Accessories",
+            "parent": 36
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 43,
+        "fields": {
+            "name": "Yoga & Meditation Supplies",
+            "parent": 36
+        }
+    }
+]

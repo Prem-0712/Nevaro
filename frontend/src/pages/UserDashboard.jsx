@@ -47,7 +47,7 @@ const StatusBadge = ({ status }) => {
 
 // --- Ícone de cartão (placeholder cinza) ---
 const CardIcon = () => (
-  <div className="w-10 h-7 rounded bg-gray-200 flex-shrink-0" />
+  <div className="w-10 h-7 rounded bg-gray-200 shrink-0" />
 );
 
 // --- Componente principal ---

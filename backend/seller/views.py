@@ -24,8 +24,6 @@ class SellerProfileView(BaseSellerView):
 
         serializer.save(user=request.user)
 
-        business_name = serializer.validated_data["business_name"]
-
         return Response(
             {"msg": "Profile Created Successfully"},
             status=status.HTTP_201_CREATED,

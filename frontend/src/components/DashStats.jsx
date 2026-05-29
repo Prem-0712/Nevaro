@@ -30,8 +30,10 @@ const Stats = [
 
     return (
         <>
-            {Stats.map((info) => (
-                <div className = "w-65 h-35 rounded-2xl border border-gray-300 p-6">
+            {Stats.map((info, index) => (
+                <div
+                key={index}
+                className = "w-65 h-35 rounded-2xl border border-gray-300 p-6">
                     <div className = "flex flex-col gap-5">
                     <div className = "flex gap-3 items-center">
                             <div className = "rounded-md py-1 px-2 bg-[#EAEAEA] items-center">

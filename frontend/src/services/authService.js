@@ -1,30 +1,21 @@
-// const BASE_URL = "http://localhost:8000";
+import axios from "axios";
+
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const registerUser = async (formData) => {
-  const response = await fetch(`${BASE_URL}/api/account/register/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(formData),
-  });
+const api = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+});
 
-  const data = await response.json();
-  return data;
+export const registerUser = async (formData) => {
+  const response = await api.post("/api/account/register/", formData);
+  return response.data;
 };
 
 export const loginUser = async (formData) => {
-  const response = await fetch(`${BASE_URL}/api/account/login/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(formData),
-  });
-
-  const data = await response.json();
-  return { data, status: response.status };
+  const response = await api.post("/api/account/login/", formData);
+  return { data: response.data, status: response.status };
 };

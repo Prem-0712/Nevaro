@@ -13,19 +13,6 @@ services:
       - nevaro_frontend_node_modules:/Nevaro/frontend/node_modules
     ports:
       - "5173:5173"
-    # working_dir: /Nevaro/frontend
-    # image: nevaro_frontend
-    # container_name: ${PROJECT_NAME}_frontend
-    # build:
-    #   context: ../frontend
-    # volumes:
-    #   - ../frontend:/workspace/frontend
-    #   - nevaro_frontend_node_modules:/workspace/frontend/node_modules
-    # ports:
-    #   - "${FRONTEND_PORT}:5173"
-    # command: sleep infinity
-    # env_file:
-    #   - .env
   nevaro_backend:
     depends_on:
       - nevaro_mysql
@@ -41,22 +28,6 @@ services:
     working_dir: /Nevaro/backend
     volumes:
       - ../:/Nevaro
-    # working_dir: /workspace/backend
-    # image: nevaro_backend
-    # container_name: ${PROJECT_NAME}_backend
-    # build:
-    #   context: ../backend
-    # volumes:
-    #   - ..:/workspace
-    # ports:
-    #   - "${BACKEND_PORT}:8000"
-    # command: sleep infinity
-    # env_file:
-    #   - .env
-    # depends_on:
-    #   nevaro_mysql:
-    #     condition: service_healthy
-
 
   nevaro_mysql:
 
@@ -74,24 +45,6 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-    # container_name: ${PROJECT_NAME}_mysql
-    # image: mysql:8.0
-    # env_file:
-    #   - .env
-    # environment:
-    #   MYSQL_DATABASE: ${MYSQL_DATABASE}
-    #   MYSQL_USER: ${MYSQL_USER}
-    #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    # volumes:
-    #   - nevaro_mysql_data:/var/lib/mysql
-    # ports:
-    #   - "${MYSQL_PORT}:3306"
-    # healthcheck:
-    #   test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-    #   retries: 10
-    #   start_period: 30s
-
   nevaro_adminer:
     image: adminer:latest
     container_name: ${PROJECT_NAME}_adminer

@@ -4,6 +4,7 @@ from account.CustomPermissions import UserRole
 from account.renderers import CustomRenderer
 from rest_framework.permissions import IsAuthenticated
 from . import serializers
+from .models import SellerModel
 from rest_framework import status
 
 
@@ -14,11 +15,11 @@ class BaseSellerView(APIView):
     required_role = "seller"
 
 
-class SellerProfileView(BaseSellerView):
+class CreateSellerProfileView(BaseSellerView):
 
     def post(self, request, format=None):
 
-        serializer = serializers.SellerProfileSerializer(data=request.data)
+        serializer = serializers.CreateSellerProfileSerializer(data=request.data)
 
         serializer.is_valid(raise_exception=True)
 
@@ -28,3 +29,35 @@ class SellerProfileView(BaseSellerView):
             {"msg": "Profile Created Successfully"},
             status=status.HTTP_201_CREATED,
         )
+
+
+class GetSellerProfileView(BaseSellerView):
+
+    def get(self, request, format=None):
+
+        try:
+            seller = SellerModel.objects.select_related("user").get(user=request.user)
+
+            serializer = serializers.GetSellerProfileSerializer(seller)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        except SellerModel.DoesNotExist:
+            return Response(
+                {"msg": "Youre profile is empty for now"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+
+class UpdateSellerProfileView(BaseSellerView):
+
+    def patch(self, request, format=None):
+
+        seller = SellerModel.objects.get(user=request.user)
+
+        serializer = serializers.UpdateSellerProfileSerializer(
+            seller, data=request.data, partial=True
+        )
+
+        serializer.is_valid(raise_exception=True)
+
+        # serializer =

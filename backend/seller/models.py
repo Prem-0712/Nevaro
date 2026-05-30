@@ -27,6 +27,9 @@ class SellerModel(models.Model):
     state_region = models.CharField(max_length=100)
     country = CountryField()
 
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+
     def __str__(self):
         return (
             f"Seller/User NAME = {self.user.name} Business NAME = {self.business_name}"

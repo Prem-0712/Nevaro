@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Chrissie",
+        "email": "cpaaso0@cafepress.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Bellina",
+        "email": "bfearnley1@behance.net",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Atlante",
+        "email": "asyde2@weebly.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Gawen",
+        "email": "gbourthoumieux3@wikispaces.com",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Reena",
+        "email": "rolliff4@shareasale.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Cullen",
+        "email": "cdavidovici5@ucsd.edu",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Chase",
+        "email": "cpilch6@biglobe.ne.jp",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Lavinia",
+        "email": "lthomesson7@tumblr.com",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Erroll",
+        "email": "emassingham8@wikia.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Waylan",
+        "email": "wborthram9@fc2.com",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Jenelle",
+        "email": "jmccambroisa@mail.ru",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Ferd",
+        "email": "firnysb@blogger.com",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Ty",
+        "email": "tkingscottc@nbcnews.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Shana",
+        "email": "skarolczykd@salon.com",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Reube",
+        "email": "rpirte@lycos.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Evita",
+        "email": "ecalteraf@wisc.edu",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Robinette",
+        "email": "rdeegang@myspace.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Sula",
+        "email": "sverrellh@nytimes.com",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    },
+    {
+        "name": "Manfred",
+        "email": "mdanielskyi@addthis.com",
+        "password": "Test@01234.",
+        "user_role": "customer"
+    },
+    {
+        "name": "Gilbertine",
+        "email": "garthyj@cmu.edu",
+        "password": "Test@01234.",
+        "user_role": "seller"
+    }
+]

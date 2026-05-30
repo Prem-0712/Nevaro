@@ -2,5 +2,11 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path("profile-create/", SellerProfileView.as_view(), name="profile-create"),
+
+    path("create-profile/", CreateSellerProfileView.as_view(), name="profile-create"),
+
+    path("get-profile/", GetSellerProfileView.as_view(), name="get-profile"),
+
+    path("update-profile/", UpdateSellerProfileView.as_view(), name="update-profile"),
+
 ]

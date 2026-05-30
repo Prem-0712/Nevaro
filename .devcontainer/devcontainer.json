@@ -1,8 +1,8 @@
 {
   "name": "NEVARO",
-  "dockerComposeFile": "docker-compose.yml",
+  "dockerComposeFile": "docker-compose.dev.yml",
   "service": "nevaro_backend",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/Nevaro",
   "forwardPorts": [
     8000,
     5173

@@ -60,4 +60,31 @@ class UpdateSellerProfileView(BaseSellerView):
 
         serializer.is_valid(raise_exception=True)
 
-        # serializer =
+        serializer.save()
+
+        return Response(
+            {"msg": "Profile has been updated successfully"}, status=status.HTTP_200_OK
+        )
+
+
+class DeleteSellerView(BaseSellerView):
+
+    def delete(self, request, format=None):
+
+        user = request.user
+
+        try:
+            seller = SellerModel.objects.get(user)
+
+        except SellerModel.DoesNotExist:
+            return Response(
+                {"msg": "Seller not found"}, status=status.HTTP_404_NOT_FOUND
+            )
+
+        seller.delete()
+        user.delete()
+
+        return Response(
+            {"msg", "Your account has been deleted successfully"},
+            status=status.HTTP_204_NO_CONTENT,
+        )

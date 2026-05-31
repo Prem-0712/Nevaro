@@ -9,3 +9,6 @@ migrate:
 
 i:
 	uv pip install --system $(pkg)
+
+debug:
+	python -m debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8000

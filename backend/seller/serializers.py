@@ -83,28 +83,42 @@ class UpdateSellerProfileSerializer(serializers.ModelSerializer):
         business_name = attrs.get("business_name")
         business_email = attrs.get("business_email")
 
-        print("EXISTING DATA IN DB", self.instance)
-        print("REQUESTED DATA FROM USER", attrs)
+        fields = [
+            "phone_number",
+            "business_name",
+            "business_email",
+            "address_line_1",
+            "address_line_2",
+            "postal_code",
+            "city",
+            "state_region",
+        ]
+
+        for field in fields:
+
+            if isinstance(attrs.get(field), str):
+                attrs[field] = attrs[field].strip().lower()
 
         qs = SellerModel.objects.all()
 
         if self.instance:
             qs = qs.exclude(id=self.instance.id)
 
-        print(qs)
+        if phone_number and qs.filter(phone_number=phone_number).exists():
+            raise serializers.ValidationError("Phone number already exists")
 
-        pass
+        if business_name and qs.filter(business_name=business_name).exists():
+            raise serializers.ValidationError("This name is already taken")
 
+        if business_email and qs.filter(business_email=business_email).exists():
+            raise serializers.ValidationError("Email already exists")
 
-# -- name
-# -- email
-# -- "id",
-# -- "phone_number",
-# -- "business_name",
-# -- "business_email",
-# -- "address_line_1",
-# -- "address_line_2",
-# -- "postal_code",
-# -- "city",
-# -- "state_region",
-# -- "country"
+        return attrs
+
+    def update(self, instance, validated_data):
+
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+
+        instance.save()
+        return instance

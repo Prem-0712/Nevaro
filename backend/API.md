@@ -424,3 +424,59 @@ Access is validated using `uid` and `token`.
   "message": "Invalid or expired reset token"
 }
 ```
+
+
+## NEW ACCESS TOKEN
+
+Get new access token for user using refresh token, when access token is expired.
+
+
+### Endpoint
+
+- **Method:** `POST`
+- **URL Pattern:** `/api/account/refresh-tokens/`
+
+- **Example URL:** `http://0.0.0.0:8000/api/account/refresh-tokens/`
+
+### Authentication 
+ 
+This endpoint is **public**.
+Access is validated using `refresh_token`.
+
+### Headers 
+
+- `Content-Type: application/json`
+- `Accept: application/json`
+
+### Request Body 
+
+|    Field    |  Type  | Required |        Notes                                              |
+|-------------|--------|----------|-----------------------------------------------------------|
+| `refresh`   | string | Yes      | logged in user refresh token from local storage           |
+
+### Exampe Request
+
+```json
+{
+    "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDQ4OTEzOCwiaWF0IjoxNzgwNDAyNzM4LCJqdGkiOiI0MGY4NzZkNWM2NzM0ZjU3ODE2YjViZTI2ZTBhYjJhOCIsInVzZXJfaWQiOiIxNSJ9.CTgjPCaAVP0KrSLKTcReu8YrZ7jO9f1EMfEsSL864oo"
+}
+```
+
+### Success Response (200 OK)
+
+```json
+{
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgwNDAzMTUyLCJpYXQiOjE3ODA0MDI4NTIsImp0aSI6ImQ1M2NkYmYwZDc5MTQyMWI4MTA5MTQ1MzkyNGQ5MTFiIiwidXNlcl9pZCI6IjE1In0.zocJveEODqKFzfuZJUsqvJZ1rmMR-gmBZtIRbXsgfsU"
+}
+```
+
+### Error Responses
+
+### Invalid refresh token
+
+```json
+{
+    "detail": "Token is invalid",
+    "code": "token_not_valid"
+}
+```

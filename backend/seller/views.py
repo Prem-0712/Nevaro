@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from . import serializers
 from .models import SellerModel
 from rest_framework import status
+from account.models import CustomUserModel
 
 
 class BaseSellerView(APIView):
@@ -74,15 +75,17 @@ class DeleteSellerView(BaseSellerView):
         user = request.user
 
         try:
-            seller = SellerModel.objects.get(user)
+            print("WORKING BEFORE")
+            user = CustomUserModel.objects.get(id=user.id)
+            print("WORKING AFTER")
 
         except SellerModel.DoesNotExist:
             return Response(
                 {"msg": "Seller not found"}, status=status.HTTP_404_NOT_FOUND
             )
 
-        seller.delete()
-        user.delete()
+        else:
+            user.delete()
 
         return Response(
             {"msg", "Your account has been deleted successfully"},

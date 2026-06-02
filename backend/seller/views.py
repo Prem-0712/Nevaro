@@ -88,6 +88,6 @@ class DeleteSellerView(BaseSellerView):
             user.delete()
 
         return Response(
-            {"msg", "Your account has been deleted successfully"},
-            status=status.HTTP_204_NO_CONTENT,
+            {"msg": "Your account has been deleted successfully"},
+            status=status.HTTP_200_OK,
         )

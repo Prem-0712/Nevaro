@@ -102,7 +102,7 @@ class LoginView(APIView):
 
             user = authenticate(request, email=email, password=password)
 
-            if user:
+            if user:    
 
                 if user.is_customer and not (user.is_seller):
                     user_role = "customer"

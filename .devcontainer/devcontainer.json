@@ -25,7 +25,9 @@
         "codezombiech.gitignore",
         "eamodio.gitlens",
         "mhutchie.git-graph",
-        "waderyan.gitblame"
+        "waderyan.gitblame",
+        "esbenp.prettier-vscode",
+        "loclv.agent-md-formatter"
       ]
     }
   }

@@ -1,11 +1,11 @@
 FROM node:lts-bookworm
 
-WORKDIR /workspace/frontend
+WORKDIR /Nevaro/frontend
 
 COPY package.json package-lock.json ./
 
 RUN npm install -g npm@11.11.0 && \
-    npm ci
+    npm install
 
 COPY . .
 

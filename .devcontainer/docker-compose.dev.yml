@@ -1,0 +1,63 @@
+name: ${PROJECT_NAME}
+
+services:
+  nevaro_frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile.dev
+    image: nevaro_frontend:1.2
+    container_name: nevaro_frontend
+    working_dir: /Nevaro/frontend
+    volumes:
+      - ../frontend:/Nevaro/frontend
+      - nevaro_frontend_node_modules:/Nevaro/frontend/node_modules
+    ports:
+      - "5173:5173"
+  nevaro_backend:
+    depends_on:
+      - nevaro_mysql
+    env_file:
+      - .env
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.dev
+    image: nevaro_backend:1.2
+    container_name: nevaro_backend
+    ports:
+      - "8000:8000"
+    working_dir: /Nevaro/backend
+    volumes:
+      - ../:/Nevaro
+
+  nevaro_mysql:
+
+    image: mysql:8.0
+    container_name: nevaro_mysql
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+  nevaro_adminer:
+    image: adminer:latest
+    container_name: ${PROJECT_NAME}_adminer
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=nevaro_mysql
+    restart: unless-stopped
+    depends_on:
+      - nevaro_mysql
+
+volumes:
+  mysql_data:
+  nevaro_frontend_node_modules:

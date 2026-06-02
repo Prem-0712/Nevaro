@@ -2,7 +2,7 @@
 
 Base URL (local): `http://0.0.0.0:8000`
 
-## Authentication
+# Authentication
 This endpoint is **public** (no auth required).
 
 ---
@@ -478,5 +478,274 @@ Access is validated using `refresh_token`.
 {
     "detail": "Token is invalid",
     "code": "token_not_valid"
+}
+```
+
+# SELLER
+This endpoint is **private** (auth required).
+
+## SELLER PROFILE CREATION
+
+Create seller profile
+
+
+### Endpoint
+
+- **Method:** `POST`
+- **URL Pattern:** `/api/seller/create-profile/`
+
+- **Example URL:** `http://0.0.0.0:8000/api/seller/create-profile/`
+
+### Authentication 
+ 
+This endpoint is **private**.
+Access is validated using `access_token`.
+
+### Headers 
+
+- `Content-Type: application/json`
+- `Accept: application/json`
+- `Authorization: Bearer ${access_token}`
+
+### Request Body 
+
+|    Field    |  Type  | Required |        Notes                                              |
+|-------------|--------|----------|-----------------------------------------------------------|
+| `phone_number`   | string | Yes      | logged in seller's phone number           |
+| `business_name`   | string | Yes      | logged in seller's business name          |
+| `business_email`   | string | Yes      | logged in seller's business email
+| `address_line_1`   | string | Yes      | logged in seller's address first line          |
+| `address_line_2`   | string | Yes      | logged in seller's address second line           |
+| `postal_code`   | string | Yes      | logged in seller's postal code           |
+| `city`   | string | Yes      | logged in seller's city           |
+| `state_region`   | string | Yes      | logged in seller's state or region           |
+| `country`   | string | Yes      | logged in seller's country           |
+
+### Exampe Request
+
+```json
+{
+    "phone_number": "+61 3 9876 5432",
+    "business_name": "OUTBACK SHIELDS",
+    "business_email": "info@outback.com.au",
+    "address_line_1": "42 WALLABY WAY",
+    "address_line_2": "KENSINGTON",
+    "postal_code": "3031",
+    "city": "meLbourne",
+    "state_region": "Victoria",
+    "country": "AU"
+  }
+```
+
+### Success Response (200 OK)
+
+```json
+{
+    "success": true,
+    "data": {
+        "msg": "Profile Created Successfully"
+    }
+}
+```
+
+### Error Responses
+
+### Invalid Request Body
+
+```json
+{
+    "success": false,
+    "status_code": 400,
+    "errors": {
+        "business_email": [
+            "This field is required."
+        ],
+        "address_line_1": [
+            "This field is required."
+        ]
+    }
+}
+```
+
+## SELLER PROFILE GET
+
+Get seller profile
+
+
+### Endpoint
+
+- **Method:** `GET`
+- **URL Pattern:** `/api/seller/get-profile/`
+
+- **Example URL:** `http://0.0.0.0:8000/api/seller/get-profile/`
+
+### Authentication 
+ 
+This endpoint is **private**.
+Access is validated using `access_token`.
+
+### Headers 
+
+- `Content-Type: application/json`
+- `Accept: application/json`
+- `Authorization: Bearer ${access_token}`
+
+
+### Success Response (200 OK)
+
+```json
+{
+    "success": true,
+    "data": {
+        "name": "Sula",
+        "email": "sverrellh@nytimes.com",
+        "id": 19,
+        "phone_number": "+61398765432",
+        "business_name": "outback shields",
+        "business_email": "info@outback.com.au",
+        "address_line_1": "42 wallaby way",
+        "address_line_2": "kensington",
+        "postal_code": "3031",
+        "city": "melbourne",
+        "state_region": "victoria",
+        "country": "AU"
+    }
+}
+```
+
+### Error Responses
+
+### Seller Profile Not Created
+
+```json
+{
+    "success": false,
+    "status_code": 404,
+    "errors": {
+        "msg": "Youre profile is empty for now"
+    }
+}
+```
+
+## SELLER PROFILE UPDATE
+
+Update seller profile
+
+
+### Endpoint
+
+- **Method:** `PATCH`
+- **URL Pattern:** `/api/seller/update-profile/`
+
+- **Example URL:** `http://0.0.0.0:8000/api/seller/update-profile/`
+
+### Authentication 
+ 
+This endpoint is **private**.
+Access is validated using `access_token`.
+
+### Headers 
+
+- `Content-Type: application/json`
+- `Accept: application/json`
+- `Authorization: Bearer ${access_token}`
+
+### Request Body 
+#### AT LEAST ONE OF THEM
+
+|    Field    |  Type  | Required |        Notes                                              |
+|-------------|--------|----------|-----------------------------------------------------------|
+| `phone_number`   | string | No      | logged in seller's phone number           |
+| `business_name`   | string | No      | logged in seller's business name          |
+| `business_email`   | string | No      | logged in seller's business email
+| `address_line_1`   | string | No      | logged in seller's address first line          |
+| `address_line_2`   | string | No      | logged in seller's address second line           |
+| `postal_code`   | string | No      | logged in seller's postal code           |
+| `city`   | string | No      | logged in seller's city           |
+| `state_region`   | string | No      | logged in seller's state or region           |
+| `country`   | string | No      | logged in seller's country           |
+
+### Exampe Request
+
+```json
+{
+    "address_line_1": "liberty donut",
+    "address_line_2": "Suite 320"
+}
+```
+
+
+### Success Response (200 OK)
+
+```json
+{
+    "success": true,
+    "data": {
+        "msg": "Profile has been updated successfully"
+    }
+}
+```
+
+### Error Responses
+
+### Null fields
+
+```json
+{
+    "success": false,
+    "status_code": 400,
+    "errors": {
+        "address_line_1": [
+            "This field may not be blank."
+        ]
+    }
+}
+```
+
+## DELETE SELLER
+
+Delete Seller Profile Along With User
+
+
+### Endpoint
+
+- **Method:** `DELETE`
+- **URL Pattern:** `/api/seller/delete-seller/`
+
+- **Example URL:** `http://0.0.0.0:8000/api/seller/delete-seller/`
+
+### Authentication 
+ 
+This endpoint is **private**.
+Access is validated using `access_token`.
+
+### Headers
+
+- `Authorization: Bearer ${access_token}`
+
+
+### Success Response (200 OK)
+
+```json
+{
+    "success": true,
+    "data": {
+        "msg": "Your account has been deleted successfully"
+    }
+}
+```
+
+### Error Responses
+
+### Invalid Access Token
+
+```json
+{
+    "success": false,
+    "status_code": 401,
+    "errors": {
+        "detail": "User not found",
+        "code": "user_not_found"
+    }
 }
 ```

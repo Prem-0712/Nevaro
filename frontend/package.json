@@ -14,9 +14,7 @@
     "axios": "^1.16.1",
     "motion": "^12.34.5",
     "react": "^19.2.0",
-    "react-country-state-city": "^1.1.12",
     "react-dom": "^19.2.0",
-    "react-phone-input-2": "^2.15.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.14.0"
   },

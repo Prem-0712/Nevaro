@@ -80,7 +80,7 @@ const HomePage = () => {
         </div>
         
 
-        <div className = "flex flex-col gap-15 ml-[-175px]">
+        <div className = "flex flex-col gap-15 -ml-43.75">
             <h1 className = "font-semibold text-2xl">
                 For you
             </h1>

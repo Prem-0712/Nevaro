@@ -10,13 +10,65 @@ const api = axios.create({
   },
 });
 
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        const data = await refreshAccessToken();
+        const newAccessToken = data.access;
+
+        localStorage.setItem("access_token", newAccessToken);
+
+        const { store } = await import("../store/store");
+        store.dispatch({
+          type: "auth/setCredentials",
+          payload: {
+            accessToken: newAccessToken,
+            refreshToken: localStorage.getItem("refresh_token"),
+            userRole: localStorage.getItem("user_role"),
+          },
+        });
+
+        originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+        return api(originalRequest);
+      } catch (refreshError) {
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
+        localStorage.removeItem("user_role");
+        window.location.href = "/";
+        return Promise.reject(refreshError);
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+export const refreshAccessToken = async () => {
+  const refreshToken = localStorage.getItem("refresh_token");
+  const response = await api.post("/api/account/refresh-tokens/", {
+    refresh: refreshToken,
+  });
+  return response.data;
+};
+
 export const registerUser = async (formData) => {
   const response = await api.post("/api/account/register/", formData);
   return response.data;
 };
 
 export const loginUser = async (formData) => {
-  const response = await api.post("/api/account/login/", formData);
+  const response = await axios.post(`${BASE_URL}/api/account/login/`, formData, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
   return { data: response.data, status: response.status };
 };
 

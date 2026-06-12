@@ -75,9 +75,7 @@ class DeleteSellerView(BaseSellerView):
         user = request.user
 
         try:
-            print("WORKING BEFORE")
             user = CustomUserModel.objects.get(id=user.id)
-            print("WORKING AFTER")
 
         except SellerModel.DoesNotExist:
             return Response(

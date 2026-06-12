@@ -15,3 +15,9 @@ debug:
 
 seed:
 	python manage.py seed_users
+
+flush:
+	python manage.py flush --noinput
+
+load:
+	python manage.py loaddata ./full_data.json

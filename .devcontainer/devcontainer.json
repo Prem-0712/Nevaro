@@ -7,6 +7,7 @@
     8000,
     5173
   ],
+  "postStartCommand": "cd backend && make flush && make load",
   "customizations": {
     "vscode": {
       "extensions": [

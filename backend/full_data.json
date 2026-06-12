@@ -1,644 +1,1570 @@
 [
-  {
-    "model": "auth.permission",
-    "pk": 1,
-    "fields": {
-      "name": "Can add log entry",
-      "content_type": 1,
-      "codename": "add_logentry"
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 4,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 4,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 4,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 4,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 5,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 5,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 5,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 5,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add User",
+            "content_type": 6,
+            "codename": "add_customusermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change User",
+            "content_type": 6,
+            "codename": "change_customusermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete User",
+            "content_type": 6,
+            "codename": "delete_customusermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view User",
+            "content_type": 6,
+            "codename": "view_customusermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add Customer",
+            "content_type": 7,
+            "codename": "add_customermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change Customer",
+            "content_type": 7,
+            "codename": "change_customermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete Customer",
+            "content_type": 7,
+            "codename": "delete_customermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view Customer",
+            "content_type": 7,
+            "codename": "view_customermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add CustomerProfile",
+            "content_type": 8,
+            "codename": "add_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change CustomerProfile",
+            "content_type": 8,
+            "codename": "change_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete CustomerProfile",
+            "content_type": 8,
+            "codename": "delete_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view CustomerProfile",
+            "content_type": 8,
+            "codename": "view_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 33,
+        "fields": {
+            "name": "Can add SellerProfile",
+            "content_type": 9,
+            "codename": "add_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 34,
+        "fields": {
+            "name": "Can change SellerProfile",
+            "content_type": 9,
+            "codename": "change_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 35,
+        "fields": {
+            "name": "Can delete SellerProfile",
+            "content_type": 9,
+            "codename": "delete_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 36,
+        "fields": {
+            "name": "Can view SellerProfile",
+            "content_type": 9,
+            "codename": "view_profilemodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 37,
+        "fields": {
+            "name": "Can add Seller",
+            "content_type": 10,
+            "codename": "add_sellermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 38,
+        "fields": {
+            "name": "Can change Seller",
+            "content_type": 10,
+            "codename": "change_sellermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 39,
+        "fields": {
+            "name": "Can delete Seller",
+            "content_type": 10,
+            "codename": "delete_sellermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 40,
+        "fields": {
+            "name": "Can view Seller",
+            "content_type": 10,
+            "codename": "view_sellermodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 41,
+        "fields": {
+            "name": "Can add Category",
+            "content_type": 11,
+            "codename": "add_categorymodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 42,
+        "fields": {
+            "name": "Can change Category",
+            "content_type": 11,
+            "codename": "change_categorymodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 43,
+        "fields": {
+            "name": "Can delete Category",
+            "content_type": 11,
+            "codename": "delete_categorymodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 44,
+        "fields": {
+            "name": "Can view Category",
+            "content_type": 11,
+            "codename": "view_categorymodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 45,
+        "fields": {
+            "name": "Can add Product",
+            "content_type": 12,
+            "codename": "add_productmodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 46,
+        "fields": {
+            "name": "Can change Product",
+            "content_type": 12,
+            "codename": "change_productmodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 47,
+        "fields": {
+            "name": "Can delete Product",
+            "content_type": 12,
+            "codename": "delete_productmodel"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 48,
+        "fields": {
+            "name": "Can view Product",
+            "content_type": 12,
+            "codename": "view_productmodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "account",
+            "model": "customusermodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "customer",
+            "model": "customermodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "customer",
+            "model": "profilemodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "seller",
+            "model": "profilemodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "seller",
+            "model": "sellermodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 11,
+        "fields": {
+            "app_label": "product",
+            "model": "categorymodel"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 12,
+        "fields": {
+            "app_label": "product",
+            "model": "productmodel"
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$mDQMiNioAoE6ffWmhkxxKh$TOLmvC7FwDvOYwH4uK29FJUhb9jA4L4uUv18rhPnNIk=",
+            "last_login": null,
+            "email": "cpaaso0@cafepress.com",
+            "name": "Chrissie",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:42.312Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$2jd2EWsZYbcqSji8lOqVIu$9sG/2xcMJcI/19bxOhiukc+zcmz/LszhNGkighimFxY=",
+            "last_login": null,
+            "email": "bfearnley1@behance.net",
+            "name": "Bellina",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:42.515Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$02MNWJkKY6cZ92h5Dvb13H$5stPkAe+y+P8DYdkDnsaXTCwOhe4rFXvSjKheHYPBB8=",
+            "last_login": null,
+            "email": "asyde2@weebly.com",
+            "name": "Atlante",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:42.753Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$dEp47tzM3hjJ0YgXdis1aB$bQk/TRfU2NuryBHkEFp8NkRKDf7oHgvpJW27RuJ58kQ=",
+            "last_login": null,
+            "email": "gbourthoumieux3@wikispaces.com",
+            "name": "Gawen",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:42.952Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$tFvN1wmTaN5I7NYqvIwAXe$8UC3PQCMS05ZTSfUHBI6fvc20Miu5egWLqeUlMCqZRo=",
+            "last_login": null,
+            "email": "rolliff4@shareasale.com",
+            "name": "Reena",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:43.153Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$eEF3qHkmEt5pZhm7uom0NJ$ul1dnya1Id3/oG/8pHaaLlmPaQPQIuxY7HVP2AilacU=",
+            "last_login": null,
+            "email": "cdavidovici5@ucsd.edu",
+            "name": "Cullen",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:43.352Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$hYnQ6Czs9XbHz6oLeOI1Mc$xN6gig+AGH3JzXNLTPoaE/SnoD+eLqZSBbbtV/Rgpx0=",
+            "last_login": null,
+            "email": "cpilch6@biglobe.ne.jp",
+            "name": "Chase",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:43.550Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$Yy5oIoxke460LjDIxxpQQd$IPhpstTyKjELx84tkSPImrvW4aPehOzDXXNB9YD9cP8=",
+            "last_login": null,
+            "email": "lthomesson7@tumblr.com",
+            "name": "Lavinia",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:43.750Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$nBouIuWY3KujU5ipKh3Sae$HZ6d1IzR3IRcpUunSSnd2mKyNJ9bHNSIyWFOiwxTc8w=",
+            "last_login": null,
+            "email": "emassingham8@wikia.com",
+            "name": "Erroll",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:43.951Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$bk0xGY842OBhS1XmPh9mww$hCuFdR0FISRkrjcHCLLPE062QHlZ9/4h6wxCTYj9RbE=",
+            "last_login": null,
+            "email": "wborthram9@fc2.com",
+            "name": "Waylan",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:44.148Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 11,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$cHe1NDrLxrn7fYFnzghk5O$Gyg2eQV5LtwZF4ynX1KUVC3Bnhf2B3vNvDwc6dX0ZRY=",
+            "last_login": null,
+            "email": "jmccambroisa@mail.ru",
+            "name": "Jenelle",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:44.345Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 12,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$tMJ8U29DSbL9EAbTqJKrEK$NB51dtXm6xK8Vo7z+r/zS9vNxjVUr3yFmnSNPLn4GfM=",
+            "last_login": null,
+            "email": "firnysb@blogger.com",
+            "name": "Ferd",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:44.547Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 13,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$dXdPS18mCVRbKvjyM5PKJP$CR0DEQGWFsKCsQ+XwR3OMk2bE7oXRDYDX82iFJwANdI=",
+            "last_login": null,
+            "email": "tkingscottc@nbcnews.com",
+            "name": "Ty",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:44.747Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 14,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$73RpD8Qd3vWKrF1Lnz3Poj$4Z/bhgeuY6ZGObB5By0mwQBuGEkOnr2MreLdNYgk2Bo=",
+            "last_login": null,
+            "email": "skarolczykd@salon.com",
+            "name": "Shana",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:44.947Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 15,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$szAOL1rP6nGkNTXbciaCOx$0iZQ2cbfb4r+6lr+Ohb5S+7Ym16x8GT1UL9jaBrdDJ4=",
+            "last_login": null,
+            "email": "rpirte@lycos.com",
+            "name": "Reube",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:45.139Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 16,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$JlRMu2jeRypgItOpSBdjPD$VFs83PdzfKcGqoaAe2MFg1+x/R/tuy0o7zjNJmsCKfE=",
+            "last_login": null,
+            "email": "ecalteraf@wisc.edu",
+            "name": "Evita",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:45.331Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 17,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$8VH2dAlm6YFMraEMjV5Gdz$op35qNYWdEVOP7f2wa6QT3+uRT0GHER96CkkrfXhIx0=",
+            "last_login": null,
+            "email": "rdeegang@myspace.com",
+            "name": "Robinette",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:45.530Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 18,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$5hlantxdCRnU0z5mNVPNRt$FsS1lam8gTYoMnL6peRxHkkZQqi/ozo2nVnpFueNF2U=",
+            "last_login": null,
+            "email": "sverrellh@nytimes.com",
+            "name": "Sula",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:45.728Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 19,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$Oksnicq1stGTZyOv1tRvBC$gEs5KIuf8/8utB3lgwALrBcDEEm8LB0upDvBNOOi/aU=",
+            "last_login": null,
+            "email": "mdanielskyi@addthis.com",
+            "name": "Manfred",
+            "is_customer": true,
+            "is_seller": false,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:45.972Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "account.customusermodel",
+        "pk": 20,
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$CCYAzNJD5FWMDtULh2aif0$cqfnX1V5sKQx4XRFTEYMqeJwLJ8G0BgmvOYs09ajjpw=",
+            "last_login": null,
+            "email": "garthyj@cmu.edu",
+            "name": "Gilbertine",
+            "is_customer": false,
+            "is_seller": true,
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "created_at": "2026-06-12T08:43:46.186Z",
+            "updated_at": "2026-06-12",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 3,
+        "fields": {
+            "user": 5,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 4,
+        "fields": {
+            "user": 7,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 5,
+        "fields": {
+            "user": 9,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 6,
+        "fields": {
+            "user": 11,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 7,
+        "fields": {
+            "user": 13,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 8,
+        "fields": {
+            "user": 15,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 9,
+        "fields": {
+            "user": 17,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "customer.customermodel",
+        "pk": 10,
+        "fields": {
+            "user": 19,
+            "birth_date": null
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:42.524Z",
+            "updated_at": "2026-06-12T08:43:42.524Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 2,
+        "fields": {
+            "user": 4,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:42.961Z",
+            "updated_at": "2026-06-12T08:43:42.961Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 3,
+        "fields": {
+            "user": 6,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:43.361Z",
+            "updated_at": "2026-06-12T08:43:43.361Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 4,
+        "fields": {
+            "user": 8,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:43.757Z",
+            "updated_at": "2026-06-12T08:43:43.757Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 5,
+        "fields": {
+            "user": 10,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:44.158Z",
+            "updated_at": "2026-06-12T08:43:44.158Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 6,
+        "fields": {
+            "user": 12,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:44.559Z",
+            "updated_at": "2026-06-12T08:43:44.559Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 7,
+        "fields": {
+            "user": 14,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:44.954Z",
+            "updated_at": "2026-06-12T08:43:44.954Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 8,
+        "fields": {
+            "user": 16,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:45.343Z",
+            "updated_at": "2026-06-12T08:43:45.343Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 9,
+        "fields": {
+            "user": 18,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:45.738Z",
+            "updated_at": "2026-06-12T08:43:45.738Z"
+        }
+    },
+    {
+        "model": "seller.sellermodel",
+        "pk": 10,
+        "fields": {
+            "user": 20,
+            "phone_number": null,
+            "business_name": null,
+            "business_email": null,
+            "address_line_1": null,
+            "address_line_2": null,
+            "postal_code": null,
+            "city": null,
+            "state_region": null,
+            "country": null,
+            "created_at": "2026-06-12T08:43:46.195Z",
+            "updated_at": "2026-06-12T08:43:46.195Z"
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 1,
+        "fields": {
+            "name": "Electronics & Gadgets",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 2,
+        "fields": {
+            "name": "Fashion & Apparel",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 3,
+        "fields": {
+            "name": "Home & Kitchen",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 4,
+        "fields": {
+            "name": "Beauty & Personal Care",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 5,
+        "fields": {
+            "name": "Health & Fitness",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 6,
+        "fields": {
+            "name": "Sports & Outdoors",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 7,
+        "fields": {
+            "name": "Books & Stationery",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 8,
+        "fields": {
+            "name": "Toys & Games",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 9,
+        "fields": {
+            "name": "Automotive",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 10,
+        "fields": {
+            "name": "Groceries",
+            "parent": null
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 11,
+        "fields": {
+            "name": "Smartphones",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 12,
+        "fields": {
+            "name": "Laptops",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 13,
+        "fields": {
+            "name": "Audio",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 14,
+        "fields": {
+            "name": "Wearables",
+            "parent": 1
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 15,
+        "fields": {
+            "name": "Men's Clothing",
+            "parent": 2
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 16,
+        "fields": {
+            "name": "Women's Clothing",
+            "parent": 2
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 17,
+        "fields": {
+            "name": "Footwear",
+            "parent": 2
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 18,
+        "fields": {
+            "name": "Accessories",
+            "parent": 2
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 19,
+        "fields": {
+            "name": "Furniture",
+            "parent": 3
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 20,
+        "fields": {
+            "name": "Kitchen Appliances",
+            "parent": 3
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 21,
+        "fields": {
+            "name": "Home Decor",
+            "parent": 3
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 22,
+        "fields": {
+            "name": "Storage & Organization",
+            "parent": 3
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 23,
+        "fields": {
+            "name": "Skincare",
+            "parent": 4
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 24,
+        "fields": {
+            "name": "Haircare",
+            "parent": 4
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 25,
+        "fields": {
+            "name": "Makeup",
+            "parent": 4
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 26,
+        "fields": {
+            "name": "Fragrances",
+            "parent": 4
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 27,
+        "fields": {
+            "name": "Supplements",
+            "parent": 5
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 28,
+        "fields": {
+            "name": "Exercise Equipment",
+            "parent": 5
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 29,
+        "fields": {
+            "name": "Yoga",
+            "parent": 5
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 30,
+        "fields": {
+            "name": "Personal Health",
+            "parent": 5
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 31,
+        "fields": {
+            "name": "Sports Equipment",
+            "parent": 6
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 32,
+        "fields": {
+            "name": "Camping",
+            "parent": 6
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 33,
+        "fields": {
+            "name": "Cycling",
+            "parent": 6
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 34,
+        "fields": {
+            "name": "Outdoor Gear",
+            "parent": 6
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 35,
+        "fields": {
+            "name": "Books",
+            "parent": 7
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 36,
+        "fields": {
+            "name": "Notebooks",
+            "parent": 7
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 37,
+        "fields": {
+            "name": "Office Supplies",
+            "parent": 7
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 38,
+        "fields": {
+            "name": "Art Supplies",
+            "parent": 7
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 39,
+        "fields": {
+            "name": "Educational Toys",
+            "parent": 8
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 40,
+        "fields": {
+            "name": "Board Games",
+            "parent": 8
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 41,
+        "fields": {
+            "name": "Action Figures",
+            "parent": 8
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 42,
+        "fields": {
+            "name": "Puzzles",
+            "parent": 8
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 43,
+        "fields": {
+            "name": "Car Accessories",
+            "parent": 9
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 44,
+        "fields": {
+            "name": "Motorcycle Accessories",
+            "parent": 9
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 45,
+        "fields": {
+            "name": "Tools",
+            "parent": 9
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 46,
+        "fields": {
+            "name": "Spare Parts",
+            "parent": 9
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 47,
+        "fields": {
+            "name": "Beverages",
+            "parent": 10
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 48,
+        "fields": {
+            "name": "Snacks",
+            "parent": 10
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 49,
+        "fields": {
+            "name": "Packaged Foods",
+            "parent": 10
+        }
+    },
+    {
+        "model": "product.categorymodel",
+        "pk": 50,
+        "fields": {
+            "name": "Household Essentials",
+            "parent": 10
+        }
     }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 2,
-    "fields": {
-      "name": "Can change log entry",
-      "content_type": 1,
-      "codename": "change_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 3,
-    "fields": {
-      "name": "Can delete log entry",
-      "content_type": 1,
-      "codename": "delete_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 4,
-    "fields": {
-      "name": "Can view log entry",
-      "content_type": 1,
-      "codename": "view_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 5,
-    "fields": {
-      "name": "Can add permission",
-      "content_type": 2,
-      "codename": "add_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 6,
-    "fields": {
-      "name": "Can change permission",
-      "content_type": 2,
-      "codename": "change_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 7,
-    "fields": {
-      "name": "Can delete permission",
-      "content_type": 2,
-      "codename": "delete_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 8,
-    "fields": {
-      "name": "Can view permission",
-      "content_type": 2,
-      "codename": "view_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 9,
-    "fields": {
-      "name": "Can add group",
-      "content_type": 3,
-      "codename": "add_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-      "name": "Can change group",
-      "content_type": 3,
-      "codename": "change_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-      "name": "Can delete group",
-      "content_type": 3,
-      "codename": "delete_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-      "name": "Can view group",
-      "content_type": 3,
-      "codename": "view_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-      "name": "Can add content type",
-      "content_type": 4,
-      "codename": "add_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-      "name": "Can change content type",
-      "content_type": 4,
-      "codename": "change_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-      "name": "Can delete content type",
-      "content_type": 4,
-      "codename": "delete_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-      "name": "Can view content type",
-      "content_type": 4,
-      "codename": "view_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-      "name": "Can add session",
-      "content_type": 5,
-      "codename": "add_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-      "name": "Can change session",
-      "content_type": 5,
-      "codename": "change_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-      "name": "Can delete session",
-      "content_type": 5,
-      "codename": "delete_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-      "name": "Can view session",
-      "content_type": 5,
-      "codename": "view_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-      "name": "Can add User",
-      "content_type": 6,
-      "codename": "add_customusermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-      "name": "Can change User",
-      "content_type": 6,
-      "codename": "change_customusermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-      "name": "Can delete User",
-      "content_type": 6,
-      "codename": "delete_customusermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-      "name": "Can view User",
-      "content_type": 6,
-      "codename": "view_customusermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 25,
-    "fields": {
-      "name": "Can add Customer",
-      "content_type": 7,
-      "codename": "add_customermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 26,
-    "fields": {
-      "name": "Can change Customer",
-      "content_type": 7,
-      "codename": "change_customermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 27,
-    "fields": {
-      "name": "Can delete Customer",
-      "content_type": 7,
-      "codename": "delete_customermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 28,
-    "fields": {
-      "name": "Can view Customer",
-      "content_type": 7,
-      "codename": "view_customermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 29,
-    "fields": {
-      "name": "Can add CustomerProfile",
-      "content_type": 8,
-      "codename": "add_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 30,
-    "fields": {
-      "name": "Can change CustomerProfile",
-      "content_type": 8,
-      "codename": "change_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 31,
-    "fields": {
-      "name": "Can delete CustomerProfile",
-      "content_type": 8,
-      "codename": "delete_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 32,
-    "fields": {
-      "name": "Can view CustomerProfile",
-      "content_type": 8,
-      "codename": "view_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 33,
-    "fields": {
-      "name": "Can add SellerProfile",
-      "content_type": 9,
-      "codename": "add_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 34,
-    "fields": {
-      "name": "Can change SellerProfile",
-      "content_type": 9,
-      "codename": "change_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 35,
-    "fields": {
-      "name": "Can delete SellerProfile",
-      "content_type": 9,
-      "codename": "delete_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 36,
-    "fields": {
-      "name": "Can view SellerProfile",
-      "content_type": 9,
-      "codename": "view_profilemodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 37,
-    "fields": {
-      "name": "Can add Seller",
-      "content_type": 10,
-      "codename": "add_sellermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 38,
-    "fields": {
-      "name": "Can change Seller",
-      "content_type": 10,
-      "codename": "change_sellermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 39,
-    "fields": {
-      "name": "Can delete Seller",
-      "content_type": 10,
-      "codename": "delete_sellermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 40,
-    "fields": {
-      "name": "Can view Seller",
-      "content_type": 10,
-      "codename": "view_sellermodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 41,
-    "fields": {
-      "name": "Can add Category",
-      "content_type": 11,
-      "codename": "add_categorymodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 42,
-    "fields": {
-      "name": "Can change Category",
-      "content_type": 11,
-      "codename": "change_categorymodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 43,
-    "fields": {
-      "name": "Can delete Category",
-      "content_type": 11,
-      "codename": "delete_categorymodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 44,
-    "fields": {
-      "name": "Can view Category",
-      "content_type": 11,
-      "codename": "view_categorymodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 45,
-    "fields": {
-      "name": "Can add Product",
-      "content_type": 12,
-      "codename": "add_productmodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 46,
-    "fields": {
-      "name": "Can change Product",
-      "content_type": 12,
-      "codename": "change_productmodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 47,
-    "fields": {
-      "name": "Can delete Product",
-      "content_type": 12,
-      "codename": "delete_productmodel"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 48,
-    "fields": {
-      "name": "Can view Product",
-      "content_type": 12,
-      "codename": "view_productmodel"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 1,
-    "fields": {
-      "app_label": "admin",
-      "model": "logentry"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 2,
-    "fields": {
-      "app_label": "auth",
-      "model": "permission"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 3,
-    "fields": {
-      "app_label": "auth",
-      "model": "group"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 4,
-    "fields": {
-      "app_label": "contenttypes",
-      "model": "contenttype"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 5,
-    "fields": {
-      "app_label": "sessions",
-      "model": "session"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 6,
-    "fields": {
-      "app_label": "account",
-      "model": "customusermodel"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 7,
-    "fields": {
-      "app_label": "customer",
-      "model": "customermodel"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 8,
-    "fields": {
-      "app_label": "customer",
-      "model": "profilemodel"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 9,
-    "fields": {
-      "app_label": "seller",
-      "model": "profilemodel"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 10,
-    "fields": {
-      "app_label": "seller",
-      "model": "sellermodel"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 11,
-    "fields": {
-      "app_label": "product",
-      "model": "categorymodel"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 12,
-    "fields": {
-      "app_label": "product",
-      "model": "productmodel"
-    }
-  },
-  {
-    "model": "account.customusermodel",
-    "pk": 3,
-    "fields": {
-      "password": "pbkdf2_sha256$1000000$0yHX4JUtg0WYuCKbrDVGhV$uoVtB6jU6S3XB3XOnYGk7QUoCd1yCJnQIL1wfIM4ufs=",
-      "last_login": null,
-      "email": "llsh6@virgilian.com",
-      "name": "clint",
-      "is_customer": true,
-      "is_seller": false,
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "created_at": "2026-02-05T11:41:37.233Z",
-      "updated_at": "2026-02-05",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "account.customusermodel",
-    "pk": 4,
-    "fields": {
-      "password": "pbkdf2_sha256$1000000$Dvt6WZOET63Os9m7mqlKAG$C9Ie+Q0U7T1gCSAiXJIntA694wIzlloiPsxEQ436KxI=",
-      "last_login": null,
-      "email": "kembulkarakshat9967@gmail.com",
-      "name": "akshat",
-      "is_customer": true,
-      "is_seller": false,
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "created_at": "2026-02-05T11:46:47.750Z",
-      "updated_at": "2026-02-05",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "account.customusermodel",
-    "pk": 5,
-    "fields": {
-      "password": "pbkdf2_sha256$1000000$IbyQmxcPTyQJFUUpu2PWER$yf9FDjgMMmhdI+yuNSWgMGC1VN9SrC0qY/hGdMuo8HQ=",
-      "last_login": null,
-      "email": "manashree.rakhade.st@gmail.com",
-      "name": "manshree",
-      "is_customer": true,
-      "is_seller": false,
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "created_at": "2026-02-05T12:42:59.559Z",
-      "updated_at": "2026-02-05",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "account.customusermodel",
-    "pk": 15,
-    "fields": {
-      "password": "pbkdf2_sha256$1000000$8o4wuH9N4tOcCM2lOxnOSJ$l58fWPggCi9gVsqzxYB1xcrPcTXVcySE8OB3smBfhQU=",
-      "last_login": null,
-      "email": "steve@example.com",
-      "name": "steve",
-      "is_customer": false,
-      "is_seller": true,
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "created_at": "2026-05-16T11:15:00.707Z",
-      "updated_at": "2026-05-16",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "account.customusermodel",
-    "pk": 16,
-    "fields": {
-      "password": "pbkdf2_sha256$1000000$2LJB2VzrFeqi9752HoCkXB$cC8l/PyCStqAYWdnBuuwRVLU9KSwe6wva9xLt6UfILk=",
-      "last_login": null,
-      "email": "peter@example.com",
-      "name": "peter",
-      "is_customer": true,
-      "is_seller": false,
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": false,
-      "created_at": "2026-05-16T11:20:41.740Z",
-      "updated_at": "2026-05-16",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "account.customusermodel",
-    "pk": 17,
-    "fields": {
-      "password": "pbkdf2_sha256$1000000$zRuMd8BP0V4Z9HqAHSpXOt$DWS8EBHDFNkX9vtK0vDa0xCz+9sxByeTEoB2wwJI4dw=",
-      "last_login": null,
-      "email": "premgangurde007@gmail.com",
-      "name": "prem",
-      "is_customer": false,
-      "is_seller": false,
-      "is_active": true,
-      "is_staff": false,
-      "is_superuser": true,
-      "created_at": "2026-05-25T15:15:08.269Z",
-      "updated_at": "2026-05-25",
-      "groups": [],
-      "user_permissions": []
-    }
-  }
 ]

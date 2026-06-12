@@ -12,3 +12,12 @@ i:
 
 debug:
 	python -m debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8000
+
+seed:
+	python manage.py seed_users
+
+flush:
+	python manage.py flush --noinput
+
+load:
+	python manage.py loaddata ./full_data.json

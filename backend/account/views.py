@@ -16,7 +16,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from . import serializers
 from .models import CustomUserModel
 from .renderers import CustomRenderer
-from .signals import Role
 from .utils import send_activation_email, send_password_reset_email
 
 
@@ -81,7 +80,6 @@ class ActivateView(APIView):
 
         user.is_active = True
         user.save()
-        Role.send(sender=ActivateView, user=user)
 
         return Response(
             {"msg": "User is successfully activated"},

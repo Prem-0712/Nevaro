@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .views import *
 from .models import SellerModel
+from django_countries.serializer_fields import CountryField
 
 
 class CreateSellerProfileSerializer(serializers.ModelSerializer):
@@ -53,6 +54,8 @@ class GetSellerProfileSerializer(serializers.ModelSerializer):
 
     email = serializers.CharField(source="user.email", read_only=True)
 
+    country = CountryField()
+
     class Meta:
         model = SellerModel
         fields = [
@@ -67,7 +70,7 @@ class GetSellerProfileSerializer(serializers.ModelSerializer):
             "postal_code",
             "city",
             "state_region",
-            "country",
+            "country"
         ]
 
 

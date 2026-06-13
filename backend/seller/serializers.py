@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.serializers import SerializerMethodField
 from .views import *
 from .models import SellerModel
 from django_countries.serializer_fields import CountryField
@@ -56,6 +57,8 @@ class GetSellerProfileSerializer(serializers.ModelSerializer):
 
     country = CountryField()
 
+    profile_completed = SerializerMethodField()
+
     class Meta:
         model = SellerModel
         fields = [
@@ -70,8 +73,25 @@ class GetSellerProfileSerializer(serializers.ModelSerializer):
             "postal_code",
             "city",
             "state_region",
-            "country"
+            "country",
+            "profile_completed",
         ]
+
+    def get_profile_completed(self, obj):
+
+        required_fields = [
+            obj.phone_number,
+            obj.business_name,
+            obj.business_email,
+            obj.address_line_1,
+            obj.address_line_2,
+            obj.postal_code,
+            obj.city,
+            obj.state_region,
+            obj.country,
+        ]
+
+        return all(required_fields)
 
 
 class UpdateSellerProfileSerializer(serializers.ModelSerializer):

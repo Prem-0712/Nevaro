@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SellerProfile } from "./SellerProfile.jsx";
 
 const sidebarItems = [
   { label: "Dashboard", icon: "📊", active: true },
@@ -89,7 +90,9 @@ export default function SellerDashboard() {
         {/* Scrollable Body */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
 
-          {/* Header */}
+          {active === "Dashboard" && (
+            <>
+            {/* Header */}
           <div>
             <h1 className="text-xl font-bold text-gray-800">Dashboard Overview</h1>
             <p className="text-sm text-gray-400 mt-1">Welcome back, John! Here's what's with your store today.</p>
@@ -192,6 +195,14 @@ export default function SellerDashboard() {
               </tbody>
             </table>
           </div>
+            </>
+          )}
+
+          {active === "My Profile" && (
+            <>
+            <SellerProfile/>
+            </>
+          )}
 
         </div>
       </div>

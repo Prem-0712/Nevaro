@@ -7,7 +7,7 @@
     8000,
     5173
   ],
-  "postStartCommand": "cd backend && make flush && make load",
+  "postStartCommand": "cd backend && make reset-db",
   "customizations": {
     "vscode": {
       "extensions": [

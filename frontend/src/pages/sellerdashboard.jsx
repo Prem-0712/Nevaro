@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../store/authSlice";
+import { unsetToken } from "../store/authSlice";
 import { getSellerProfile, updateSellerProfile, deleteSeller } from "../services/authService";
 
 const sidebarItems = [
@@ -101,7 +101,7 @@ export default function SellerDashboard() {
     try {
       const { status } = await deleteSeller();
       if (status === 200) {
-        dispatch(logout());
+        dispatch(unsetToken());
         navigate("/");
       }
     } catch (err) {
@@ -110,7 +110,7 @@ export default function SellerDashboard() {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(unsetToken());
     navigate("/");
   };
 

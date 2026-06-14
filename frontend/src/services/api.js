@@ -27,7 +27,7 @@ API.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config
         
-        // Don't retry the refresh endpoint itself
+        
         const isRefreshEndpoint = originalRequest.url.includes('/api/account/refresh-tokens/')
         
         if (

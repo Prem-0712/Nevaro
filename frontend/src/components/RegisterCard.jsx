@@ -192,7 +192,7 @@ const RegisterCard = () => {
 
         <p className="text-center text-sm text-gray-500">
           Already have an account?{" "}
-          <a href="/login" className="text-yellow-600 font-medium hover:underline">
+          <a href="/" className="text-yellow-600 font-medium hover:underline">
             Sign in
           </a>
         </p>

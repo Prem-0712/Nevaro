@@ -2,36 +2,36 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   userRole: localStorage.getItem("user_role") || null,
-  accessToken: localStorage.getItem("access_token") || null,
-  refreshToken: localStorage.getItem("refresh_token") || null,
-  isAuthenticated: !!localStorage.getItem("access_token"),
+  accessToken: localStorage.getItem("accessToken") || null,
+  refreshToken: localStorage.getItem("refreshToken") || null,
+  isAuthenticated: !!localStorage.getItem("accessToken"),
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setCredentials: (state, action) => {
+    setToken: (state, action) => {
       const { accessToken, refreshToken, userRole } = action.payload;
       state.accessToken = accessToken;
       state.refreshToken = refreshToken;
       state.userRole = userRole;
       state.isAuthenticated = true;
-      localStorage.setItem("access_token", accessToken);
-      localStorage.setItem("refresh_token", refreshToken);
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("user_role", userRole);
     },
-    logout: (state) => {
+    unsetToken: (state) => {
       state.userRole = null;
       state.accessToken = null;
       state.refreshToken = null;
       state.isAuthenticated = false;
-      localStorage.removeItem("access_token");
-      localStorage.removeItem("refresh_token");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
       localStorage.removeItem("user_role");
     },
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setToken, unsetToken } = authSlice.actions;
 export default authSlice.reducer;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Logo from "./icons/Logo.jsx";
 import { registerUser, loginUser } from "../services/authService";
 import { useDispatch } from "react-redux";
-import { setCredentials } from "../store/authSlice";
+import { setToken } from "../store/authSlice";
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/;
 
@@ -37,6 +37,7 @@ const LoginCard = () => {
     setErrors({});
 
     if (!isLogin) {
+      // REGISTER FLOW
       const validationErrors = validate();
       if (Object.keys(validationErrors).length > 0) {
         setErrors(validationErrors);
@@ -55,7 +56,11 @@ const LoginCard = () => {
           setErrors(response.errors || {});
         } else {
           setSuccess("Registration successful! Please check your email to activate your account.");
-          setName(""); setEmail(""); setPassword(""); setConfirmPassword(""); setUserRole("customer");
+          setName("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          setUserRole("customer");
         }
       } catch (err) {
         setErrors({ general: "Something went wrong. Please try again." });
@@ -63,45 +68,41 @@ const LoginCard = () => {
         setLoading(false);
       }
     } else {
-  setLoading(true);
-  try {
-    const { data, status } = await loginUser({ email, password });
-    // console.log("Login response:", data, "Status:", status);
+      // LOGIN FLOW
+      setLoading(true);
+      try {
+        const { data, status } = await loginUser({ email, password });
 
+        if (status === 200) {
+          const userRole = data.data.user_role;
 
-    if (status === 200) {
-  const userRole = data.data.user_role;
+          dispatch(
+            setToken({
+              accessToken: data.data.jwt_token.access,
+              refreshToken: data.data.jwt_token.refresh,
+              userRole: userRole,
+            })
+          );
 
-  dispatch(setCredentials({
-    accessToken: data.data.jwt_token.access,
-    refreshToken: data.data.jwt_token.refresh,
-    userRole: userRole,
-  }));
-
-  // Redirect based on role
-  if (userRole === "customer") {
-    window.location.href = "/user-dashboard";
-  } else if (userRole === "seller") {
-    window.location.href = "/seller-dashboard";
-  } else if (userRole === "admin") {
-    window.location.href = "/admin-dashboard";
-  }
-}
-
- else {
-      setErrors({
-        general:
-          data.errors?.non_field_errors?.[0] ||
-          "Login failed. Please try again.",
-      });
+          // Redirect based on role
+          if (userRole === "customer") {
+            window.location.href = "/user-dashboard";
+          } else if (userRole === "seller") {
+            window.location.href = "/seller-dashboard";
+          } else if (userRole === "admin") {
+            window.location.href = "/admin-dashboard";
+          }
+        } else {
+          setErrors({
+            general: data.errors?.non_field_errors?.[0] || "Login failed. Please try again.",
+          });
+        }
+      } catch (err) {
+        setErrors({ general: "Something went wrong. Please try again." });
+      } finally {
+        setLoading(false);
+      }
     }
-  } catch (err) {
-    setErrors({ general: "Something went wrong. Please try again." });
-  } finally {
-    setLoading(false);
-  }
-}
-
   };
 
   return (
@@ -115,14 +116,26 @@ const LoginCard = () => {
       <div className="flex justify-center mb-10">
         <div className="bg-gray-100 rounded-full flex shadow-lg shadow-black/30">
           <button
-            onClick={() => { setIsLogin(false); setErrors({}); setSuccess(""); }}
-            className={`${!isLogin ? "bg-black text-white" : "text-black"} px-6 py-2 rounded-full text-sm font-medium transition-all`}
+            onClick={() => {
+              setIsLogin(false);
+              setErrors({});
+              setSuccess("");
+            }}
+            className={`${
+              !isLogin ? "bg-black text-white" : "text-black"
+            } px-6 py-2 rounded-full text-sm font-medium transition-all`}
           >
             Sign in
           </button>
           <button
-            onClick={() => { setIsLogin(true); setErrors({}); setSuccess(""); }}
-            className={`${isLogin ? "bg-black text-white" : "text-black"} px-6 py-2 rounded-full text-sm font-medium transition-all`}
+            onClick={() => {
+              setIsLogin(true);
+              setErrors({});
+              setSuccess("");
+            }}
+            className={`${
+              isLogin ? "bg-black text-white" : "text-black"
+            } px-6 py-2 rounded-full text-sm font-medium transition-all`}
           >
             Log in
           </button>
@@ -131,7 +144,6 @@ const LoginCard = () => {
 
       {/* Main Card */}
       <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-xl min-w-125">
-
         {success && (
           <div className="bg-green-50 text-green-700 text-sm rounded-lg px-4 py-3 mb-4">
             {success}
@@ -144,7 +156,6 @@ const LoginCard = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-
           {/* Name - only on register */}
           {!isLogin && (
             <div>
@@ -153,7 +164,9 @@ const LoginCard = () => {
                 placeholder="Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${errors.name ? "border-red-400" : "border-black"}`}
+                className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
+                  errors.name ? "border-red-400" : "border-black"
+                }`}
               />
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
@@ -166,7 +179,9 @@ const LoginCard = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${errors.email ? "border-red-400" : "border-black"}`}
+              className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
+                errors.email ? "border-red-400" : "border-black"
+              }`}
               required
             />
             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -179,7 +194,9 @@ const LoginCard = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${errors.password ? "border-red-400" : "border-black"}`}
+              className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
+                errors.password ? "border-red-400" : "border-black"
+              }`}
               required
             />
             {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
@@ -193,9 +210,13 @@ const LoginCard = () => {
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${errors.confirmPassword ? "border-red-400" : "border-black"}`}
+                className={`w-full h-12 px-4 bg-gray-50 rounded-lg border focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
+                  errors.confirmPassword ? "border-red-400" : "border-black"
+                }`}
               />
-              {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>}
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>
+              )}
             </div>
           )}
 

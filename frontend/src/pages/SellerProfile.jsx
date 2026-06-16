@@ -30,8 +30,13 @@ export const SellerProfile = () => {
             const { data } = await getSellerProfile();
             console.log("Response:", data);
             setFormData(data.data);
+            console.log("IS Completed: ", data.data.profile_completed);
             // console.log("hello status", status)
-            setProfileExist(true)
+            if(data.data.profile_completed === true){
+                setProfileExist(true)
+            } else {
+                setProfileExist(false)
+            }
         } catch (error) {
             console.log("Error", error.response);
             if (error.response?.status === 404) {

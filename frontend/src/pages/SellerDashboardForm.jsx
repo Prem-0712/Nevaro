@@ -145,7 +145,11 @@ const SellerDashboardForm = ({ onProfileCreated }) => {
                             /> */}
                             <select className="p-4 border rounded-lg"
                                 value={formData.country}
-                                onChange={(e) => setCountry(e.target.value)}
+                                onChange={(e) =>
+                                    setFormData(prev => ({
+                                        ...prev,
+                                        country: e.target.value,
+                                    }))}
                             >
                                 <option value="">Select Country</option>
 

@@ -77,18 +77,55 @@ const SellerDashboardForm = ({ onProfileCreated }) => {
             console.log("handsubmit data:", data);
             setProfileCreated(true);
         } catch (error) {
-            console.log("Something went wrong: ", error)
+            // Extract backend errors from response
+            if (error.response?.data?.errors) {
+                // Backend returns errors as an object with field names as keys
+                const backendErrors = error.response.data.errors;
+
+                // Convert the error arrays to strings
+                const formatErrors = {};
+                Object.keys(backendErrors).forEach(field => {
+                    // take the first error message for each field
+                    formatErrors[field] = backendErrors[field][0];
+                });
+
+                setErrors(formatErrors);
+            }
+            else {
+                console.log("Something went wrong: ", error);
+            }
         }
     }
 
     const handleBlur = async (postal_code) => {
-        console.log("handle Blue triggered");
-        const data = await fetch(`http://api.geonames.org/postalCodeLookupJSON?postalcode=${postal_code}&country=IN&username=nevaro`)
-        let json = await data.json()
-        json = json.postalcodes[0]
-        setFormData((prev) => ({ ...prev, city: json.adminName3, state_region: json.adminName1, country: json.countryCode }))
-        console.log(json)
-    }
+        try {
+            const data = await fetch(
+                `http://api.geonames.org/postalCodeLookupJSON?postalcode=${postal_code}&country=IN&username=nevaro`
+            );
+
+            const json = await data.json();
+
+            if (!json.postalcodes || json.postalcodes.length === 0) {
+                setErrors(prev => ({
+                    ...prev,
+                    postal_code: "Invalid postal code"
+                }));
+
+                return;
+            }
+
+            const postalData = json.postalcodes[0];
+
+            setFormData(prev => ({
+                ...prev,
+                city: postalData.adminName3,
+                state_region: postalData.adminName1,
+                country: postalData.countryCode
+            }));
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
         if (profileCreated) {
@@ -115,18 +152,26 @@ const SellerDashboardForm = ({ onProfileCreated }) => {
                                     onChange={handlePhoneChange}
                                     value={phone}
                                 />
-                                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+                                {errors.phone_number && <p className="text-red-500 text-xs mt-1">{errors.phone_number}</p>}
 
                             </div>
                             <input className="p-4 border rounded-lg" name="business_name" type="text" placeholder="Business Name" onChange={handleChange} required={true} />
-                            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+                            {errors.non_field_errors && <p className="text-red-500 text-xs mt-1">{errors.non_field_errors}</p>}
+
                             <input className="p-4 border rounded-lg" name="business_email" type="email" placeholder="Business Email" onChange={handleChange} required={true} />
+                            {errors.business_email && <p className="text-red-500 text-xs mt-1">{errors.business_email}</p>}
+
                             <input className="p-4 border rounded-lg" name="address_line_1" type="text" placeholder="Adress line 1" onChange={handleChange} required={true} />
                             <input className="p-4 border rounded-lg" name="address_line_2" type="text" placeholder="Adress line 2" onChange={handleChange} required={true} />
 
                             <input className="p-4 border rounded-lg" name="postal_code" type="number" placeholder="Postal code" onChange={handleChange}
                                 onBlur={(e) => handleBlur(e.target.value)} required={true}
                             />
+                            {errors.postal_code && (
+                                <p className="text-red-500 text-xs mt-1">
+                                    {errors.postal_code}
+                                </p>
+                            )}
 
                             <input className="p-4 border rounded-lg" name="city" type="text" placeholder="city"
                                 onChange={handleChange}

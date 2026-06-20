@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { unsetToken } from "../store/authSlice";
-import { getSellerProfile, updateSellerProfile, deleteSeller } from "../services/authService";
+import { useState } from "react";
+import { SellerProfile } from "./SellerProfile.jsx";
 
 const sidebarItems = [
   { label: "Dashboard", icon: "📊", active: true },
@@ -161,10 +158,11 @@ export default function SellerDashboard() {
 
           {active === "Dashboard" && (
             <>
-              <div>
-                <h1 className="text-xl font-bold text-gray-800">Dashboard Overview</h1>
-                <p className="text-sm text-gray-400 mt-1">Welcome back! Here's what's with your store today.</p>
-              </div>
+            {/* Header */}
+          <div>
+            <h1 className="text-xl font-bold text-gray-800">Dashboard Overview</h1>
+            <p className="text-sm text-gray-400 mt-1">Welcome back, John! Here's what's with your store today.</p>
+          </div>
 
               <div className="grid grid-cols-4 gap-4">
                 {stats.map((stat) => (
@@ -228,109 +226,40 @@ export default function SellerDashboard() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-4 shadow-sm">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-sm font-semibold text-gray-700">Recent Orders</h2>
-                  <button className="text-xs text-gray-400 hover:text-gray-600">View All Orders</button>
-                </div>
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="text-gray-400 text-xs border-b border-gray-100">
-                      <th className="text-left pb-2 font-medium">Order ID</th>
-                      <th className="text-left pb-2 font-medium">Customer</th>
-                      <th className="text-left pb-2 font-medium">Product</th>
-                      <th className="text-left pb-2 font-medium">Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentOrders.map((order) => (
-                      <tr key={order.id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                        <td className="py-3 text-gray-500">{order.id}</td>
-                        <td className="py-3 text-gray-700">{order.customer}</td>
-                        <td className="py-3 text-gray-700">{order.product}</td>
-                        <td className="py-3 text-gray-700 font-medium">{order.amount}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+          {/* Recent Orders */}
+          <div className="bg-white rounded-2xl p-4 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-sm font-semibold text-gray-700">Recent Orders</h2>
+              <button className="text-xs text-gray-400 hover:text-gray-600">View All Orders</button>
+            </div>
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-gray-400 text-xs border-b border-gray-100">
+                  <th className="text-left pb-2 font-medium">Order ID</th>
+                  <th className="text-left pb-2 font-medium">Customer</th>
+                  <th className="text-left pb-2 font-medium">Product</th>
+                  <th className="text-left pb-2 font-medium">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentOrders.map((order) => (
+                  <tr key={order.id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                    <td className="py-3 text-gray-500">{order.id}</td>
+                    <td className="py-3 text-gray-700">{order.customer}</td>
+                    <td className="py-3 text-gray-700">{order.product}</td>
+                    <td className="py-3 text-gray-700 font-medium">{order.amount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
             </>
           )}
 
           {active === "My Profile" && (
-            <div className="max-w-2xl space-y-6">
-              <h1 className="text-xl font-bold text-gray-800">My Profile</h1>
-
-              {updateSuccess && (
-                <div className="bg-green-50 text-green-700 text-sm rounded-lg px-4 py-3">{updateSuccess}</div>
-              )}
-              {updateError && (
-                <div className="bg-red-50 text-red-600 text-sm rounded-lg px-4 py-3">{updateError}</div>
-              )}
-
-              <form onSubmit={handleUpdate} className="bg-white rounded-2xl p-6 shadow-sm space-y-4">
-                <h2 className="text-sm font-semibold text-gray-700 mb-2">Business Information</h2>
-                {[
-                  { name: "phone_number", label: "Phone Number" },
-                  { name: "business_name", label: "Business Name" },
-                  { name: "business_email", label: "Business Email" },
-                  { name: "address_line_1", label: "Address Line 1" },
-                  { name: "address_line_2", label: "Address Line 2" },
-                  { name: "postal_code", label: "Postal Code" },
-                  { name: "city", label: "City" },
-                  { name: "state_region", label: "State / Region" },
-                  { name: "country", label: "Country" },
-                ].map((field) => (
-                  <div key={field.name}>
-                    <label className="block text-xs text-gray-500 mb-1">{field.label}</label>
-                    <input
-                      type="text"
-                      name={field.name}
-                      value={formData[field.name] || ""}
-                      onChange={handleChange}
-                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
-                    />
-                  </div>
-                ))}
-                <button
-                  type="submit"
-                  className="w-full bg-gray-900 text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-700 transition-colors"
-                >
-                  Update Profile
-                </button>
-              </form>
-
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-red-100">
-                <h2 className="text-sm font-semibold text-red-600 mb-2">Danger Zone</h2>
-                <p className="text-xs text-gray-500 mb-4">Deleting your account is permanent and cannot be undone.</p>
-                {!deleteConfirm ? (
-                  <button
-                    onClick={() => setDeleteConfirm(true)}
-                    className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-600 transition-colors"
-                  >
-                    Delete Account
-                  </button>
-                ) : (
-                  <div className="space-y-2">
-                    <p className="text-sm text-red-600 font-medium">Are you sure? This cannot be undone!</p>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={handleDelete}
-                        className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-600"
-                      >
-                        Yes, Delete
-                      </button>
-                      <button
-                        onClick={() => setDeleteConfirm(false)}
-                        className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+            <>
+            <SellerProfile/>
+            </>
           )}
 
         </div>

@@ -46,7 +46,7 @@ const SellerDashboardForm = ({ onProfileCreated }) => {
     }
     const validate = () => {
         const newErrors = {};
-        if (!phone.trim()) newErrors.phone = "Phone number is required";
+        if (!phone.trim()) newErrors.phone_number = "Phone number is required";
         if (!formData.business_email.trim()) newErrors.email = "Email is required";
         else if (!formData.address_line_1.trim()) newErrors.address_line_1 = "Enter a Address Line 1"
         if (!formData.address_line_2.trim()) newErrors.address_line_2 = "Enter Adress Line 2";

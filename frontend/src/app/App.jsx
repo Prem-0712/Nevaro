@@ -7,7 +7,6 @@ import AdminDashboard from '../pages/AdminDashboard';
 import RegisterPage from '../pages/RegisterPage';
 import AccountActivationPage from '../pages/AccountActivationPage';
 import { AuthGuard, GuestGuard, RoleGuard } from '../components/ProtectedRoute';
-import SellerDashboardForm from '../pages/SellerDashboardForm';
 
 export default function App() {
   return (
@@ -24,7 +23,6 @@ export default function App() {
         <Route path="/user-dashboard" element={<RoleGuard allowedRole="customer"><UserDashboard /></RoleGuard>} />
         <Route path="/seller-dashboard" element={<RoleGuard allowedRole="seller"><SellerDashboard /></RoleGuard>} />
         <Route path="/admin-dashboard" element={<RoleGuard allowedRole="admin"><AdminDashboard /></RoleGuard>} />
-        <Route path="/seller-dashboard-form" element={<SellerDashboardForm />}/>
       </Routes>
     </Router>
   );

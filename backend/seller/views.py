@@ -20,15 +20,11 @@ class CreateSellerProfileView(BaseSellerView):
 
     def post(self, request, format=None):
 
-        seller = SellerModel.objects.get(user=request.user)
-
-        serializer = serializers.CreateSellerProfileSerializer(
-            seller, data=request.data
-        )
+        serializer = serializers.CreateSellerProfileSerializer(data=request.data)
 
         serializer.is_valid(raise_exception=True)
 
-        serializer.save()
+        serializer.save(user=request.user)
 
         return Response(
             {"msg": "Profile Created Successfully"},

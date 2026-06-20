@@ -68,20 +68,21 @@ const LoginCard = () => {
         setLoading(false);
       }
     } else {
+      // LOGIN FLOW
       setLoading(true);
       try {
         const { data, status } = await loginUser({ email, password });
-        // console.log("Login response:", data, "Status:", status);
-
 
         if (status === 200) {
           const userRole = data.data.user_role;
 
-          dispatch(setCredentials({
-            accessToken: data.data.jwt_token.access,
-            refreshToken: data.data.jwt_token.refresh,
-            userRole: userRole,
-          }));
+          dispatch(
+            setToken({
+              accessToken: data.data.jwt_token.access,
+              refreshToken: data.data.jwt_token.refresh,
+              userRole: userRole,
+            })
+          );
 
           // Redirect based on role
           if (userRole === "customer") {
@@ -91,13 +92,9 @@ const LoginCard = () => {
           } else if (userRole === "admin") {
             window.location.href = "/admin-dashboard";
           }
-        }
-
-        else {
+        } else {
           setErrors({
-            general:
-              data.errors?.non_field_errors?.[0] ||
-              "Login failed. Please try again.",
+            general: data.errors?.non_field_errors?.[0] || "Login failed. Please try again.",
           });
         }
       } catch (err) {
@@ -106,7 +103,6 @@ const LoginCard = () => {
         setLoading(false);
       }
     }
-
   };
 
   return (

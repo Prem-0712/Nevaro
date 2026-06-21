@@ -97,34 +97,57 @@ const SellerDashboardForm = ({ onProfileCreated }) => {
         }
     }
 
-    const handleBlur = async (postal_code) => {
-        try {
-            const data = await fetch(
-                `http://api.geonames.org/postalCodeLookupJSON?postalcode=${postal_code}&country=IN&username=nevaro`
-            );
+    const handleBlur = async (postal_code, country) => {
+        if (postal_code == '') return;
+        if (!country) {
+            try {
+                const data = await fetch(
+                    `http://api.geonames.org/postalCodeLookupJSON?postalcode=${postal_code}&username=nevaro`
+                );
 
-            const json = await data.json();
+                const json = await data.json();
 
-            if (!json.postalcodes || json.postalcodes.length === 0) {
-                setErrors(prev => ({
+                if (!json.postalcodes || json.postalcodes.length === 0) {
+                    setErrors(prev => ({
+                        ...prev,
+                        postal_code: "Invalid postal code"
+                    }));
+
+                    return;
+                }
+
+                const postalData = json.postalcodes[0];
+
+                setFormData(prev => ({
                     ...prev,
-                    postal_code: "Invalid postal code"
+                    city: postalData.adminName3,
+                    state_region: postalData.adminName1,
+                    country: postalData.countryCode
                 }));
-
-                return;
+            } catch (error) {
+                console.error(error);
             }
-
-            const postalData = json.postalcodes[0];
-
-            setFormData(prev => ({
-                ...prev,
-                city: postalData.adminName3,
-                state_region: postalData.adminName1,
-                country: postalData.countryCode
-            }));
-        } catch (error) {
-            console.error(error);
         }
+        if (postal_code && country) {
+            console.log("country and postal code")
+            try {
+                const data = await fetch(`http://api.geonames.org/postalCodeLookupJSON?postalcode=${postal_code}&country=${country}&username=nevaro`)
+                const json = await data.json();
+                console.log(json.postalcodes);
+
+                const postalData = json.postalcodes[0];
+                setFormData(prev => (
+                    {
+                        ...prev,
+                        city: postalData.adminName3,
+                        state_region: postalData.adminName1,
+                    }
+                ))
+            } catch (error) {
+
+            }
+        }
+
     };
 
     useEffect(() => {
@@ -164,7 +187,7 @@ const SellerDashboardForm = ({ onProfileCreated }) => {
                             <input className="p-4 border rounded-lg" name="address_line_1" type="text" placeholder="Adress line 1" onChange={handleChange} required={true} />
                             <input className="p-4 border rounded-lg" name="address_line_2" type="text" placeholder="Adress line 2" onChange={handleChange} required={true} />
 
-                            <input className="p-4 border rounded-lg" name="postal_code" type="number" placeholder="Postal code" onChange={handleChange}
+                            <input className="p-4 border rounded-lg" name="postal_code" type="text" placeholder="Postal code" onChange={handleChange}
                                 onBlur={(e) => handleBlur(e.target.value)} required={true}
                             />
                             {errors.postal_code && (
@@ -195,6 +218,7 @@ const SellerDashboardForm = ({ onProfileCreated }) => {
                                         ...prev,
                                         country: e.target.value,
                                     }))}
+                                onBlur={(e) => handleBlur(formData.postal_code, formData.country)}
                             >
                                 <option value="">Select Country</option>
 

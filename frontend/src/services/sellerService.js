@@ -19,3 +19,8 @@ export const getSellerProfile = async () => {
   const response = await api.get("/api/seller/get-profile/");
   return {data: response.data};
 }
+
+export const updateSellerProfile = async(formData) => {
+  const response = await api.patch('/api/seller/update-profile/', formData);
+  return response.data
+}

@@ -62,7 +62,7 @@ class UpdateSellerProfileSerializer(serializers.ModelSerializer):
         business_name = attrs.get("business_name")
         business_email = attrs.get("business_email")
 
-        fields = [
+        fields_to_check = [
             "phone_number",
             "business_name",
             "business_email",
@@ -73,24 +73,42 @@ class UpdateSellerProfileSerializer(serializers.ModelSerializer):
             "state_region",
         ]
 
-        for field in fields:
+        for field in fields_to_check:
+            if field in attrs:
+                value = attrs[field]
 
-            if isinstance(attrs.get(field), str):
-                attrs[field] = attrs[field].strip().lower()
+                # If string and empty or only whitespace
+                if isinstance(value, str) and value.strip() == "":
+                    raise serializers.ValidationError(
+                        {
+                            field: f"{field.replace('_', ' ').title()} cannot be empty or contain only spaces."
+                        }
+                    )
 
+                # Strip and lower for strings
+                if isinstance(attrs.get(field), str):
+                    attrs[field] = attrs[field].strip().lower()
+
+        # Check uniqueness
         qs = SellerModel.objects.all()
 
         if self.instance:
             qs = qs.exclude(id=self.instance.id)
 
         if phone_number and qs.filter(phone_number=phone_number).exists():
-            raise serializers.ValidationError("Phone number already exists")
+            raise serializers.ValidationError(
+                {"phone_number": "Phone number already exists"}
+            )
 
         if business_name and qs.filter(business_name=business_name).exists():
-            raise serializers.ValidationError("This name is already taken")
+            raise serializers.ValidationError(
+                {"business_name": "This name is already taken"}
+            )
 
         if business_email and qs.filter(business_email=business_email).exists():
-            raise serializers.ValidationError("Email already exists")
+            raise serializers.ValidationError(
+                {"business_email": "Email already exists"}
+            )
 
         return attrs
 

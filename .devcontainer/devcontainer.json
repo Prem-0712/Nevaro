@@ -8,6 +8,9 @@
     5173
   ],
   "postStartCommand": "cd backend && make flush && make load",
+  "remoteUser": "root",
+  "containerUser": "root",
+  "overrideCommand": false,
   "customizations": {
     "vscode": {
       "extensions": [
@@ -29,7 +32,20 @@
         "waderyan.gitblame",
         "esbenp.prettier-vscode",
         "loclv.agent-md-formatter"
-      ]
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "args": [
+              "-l"
+            ]
+          }
+        },
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
     }
-  }
+  },
+  "postCreateCommand": "chsh -s /bin/bash root && echo 'export PS1=\"\\u@\\h:\\w\\\\$ \"' >> ~/.bashrc && echo 'alias ls=\"ls --color=never\"' >> ~/.bashrc"
 }

@@ -21,3 +21,9 @@ flush:
 
 load:
 	python manage.py loaddata ./full_data.json
+
+set:
+	python manage.py flush --noinput
+	python manage.py makemigrations
+	python manage.py migrate
+	python manage.py loaddata ./full_data.json
